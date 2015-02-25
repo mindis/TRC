@@ -1,0 +1,35 @@
+import TransactionManager.TM;
+
+/*
+ * Assumption: 
+ * 1. Size of the record.
+ * int: 4 byte
+ * char: 1 byte
+ * flag: 1 byte
+ * So each tuple/record has 4+18+12+1=25 byte.
+ * 
+ * 2. Page size is 4KB. User need to specify the buffer size in number of pages.
+ * 
+ * 
+ */
+
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("*** PittHN starts executing ***");
+		
+		TM.execute();
+		if(TM.instructionList.size()<1){
+			System.out.println("No transactions received. ");
+			System.out.println("*** PittHN finishes executing ***");
+			System.exit(0);
+		}
+		
+		//TODO Scheduler
+		//Data passed from TM: TM.instructionList
+		//Data passed to Data Manager:  DM.execute(ArrayList<instructions> inst)
+		
+		System.out.println("*** PittHN finishes executing ***");
+		
+	}
+
+}

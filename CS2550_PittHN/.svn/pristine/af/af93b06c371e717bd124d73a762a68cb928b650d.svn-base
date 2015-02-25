@@ -1,0 +1,25 @@
+
+public class Instruction {
+	int fileID;
+	int transactionID;
+	String inst;
+	String command;
+	String table;
+	String data;
+	
+	Instruction(int fileID, int tid, String inst){
+		this.fileID = fileID;
+		this.transactionID = tid;
+		this.inst = inst;
+	}
+	
+	Instruction(int fileID, int tid, String inst, String cmd, String table, String data){
+		this.fileID = fileID;
+		this.transactionID = tid;
+		this.inst = inst;
+		this.command = cmd;
+		this.table = table;
+		this.data = data;
+		
+	}
+}

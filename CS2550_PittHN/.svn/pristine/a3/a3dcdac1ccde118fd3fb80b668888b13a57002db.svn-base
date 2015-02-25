@@ -1,0 +1,13 @@
+package DataManager;
+
+import java.util.ArrayList;
+
+import Common.Instruction;
+
+public class DM {
+
+	public static void execute(ArrayList<Instruction> inst){
+		
+	}
+
+}

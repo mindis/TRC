@@ -1,0 +1,205 @@
+package Scheduler;
+
+public class LockTableValue
+{
+	private LockTableList currentList;
+	private LockTableList waitingList;
+	
+	public LockTableValue()
+	{
+		currentList = new LockTableList();
+		waitingList = new LockTableList();
+	}
+	
+	public boolean isWaitingEmpty()
+	{
+		return waitingList.isEmpty();
+	}
+	
+	public boolean isCurrentEmpty()
+	{
+		return currentList.isEmpty();
+	}
+	
+	//check if two locks are compatible
+	public boolean compatible(int lockType1, int lockType2)
+	{
+		switch(lockType1)
+		{
+		case 1:
+			if(lockType2 == 4)
+				return false;
+			else
+				return true;
+		case 2: 
+			if(lockType2 == 1 || lockType2 == 2)
+				return true;
+			else
+				return false;
+		case 3:
+			if(lockType2 == 1 || lockType2 == 3)
+				return true;
+			else
+				return false;
+		case 4:
+			return false;
+		}
+		return true;
+	}
+	
+	//try to add a lock
+	public boolean add(LockTableElement e)
+	{
+		if(currentList.isEmpty()) //no one else is holding the lock
+		{
+			currentList.add(e);
+			return true;
+		}
+		else if(currentList.contains(e)) //already got same type of lock
+			return true;
+		//already got X lock while requesting other lock
+		else if(currentList.contains(new LockTableElement(e.getTransactionID(), 4)))
+			return true;
+		//already got S lock while requesting IS lock
+		else if(currentList.contains(new LockTableElement(e.getTransactionID(), 3)) && e.getLockType() == 1)
+			return true;
+		//already got IX lock while requesting IS lock
+		else if(currentList.contains(new LockTableElement(e.getTransactionID(), 2)) && e.getLockType() == 1)
+			return true;
+		//already got a weaker lock but cannot convert lock
+		else if(currentList.contains(e.getTransactionID()))
+		{
+			currentList.remove(e.getTransactionID());
+			return this.add(e);
+		}
+		//this xact has never request any lock on this item
+		else
+		{
+			int currentSize = currentList.size();
+			for(int i = 0; i < currentSize; i++)
+			{
+				if(!compatible(e.getLockType(), currentList.get(i).getLockType()))
+				{
+					waitingList.add(e);
+					return false;
+				}
+			}
+			currentList.add(e);
+			return true;	
+		}
+		/*
+		else if(compatible(e.getLockType(), currentList.retrieve().getLockType()))
+		{
+			currentList.add(e);
+			return true;			
+		}
+		else if(!compatible(e.getLockType(), currentList.retrieve().getLockType()))
+		{
+			waitingList.add(e);
+			return false;			
+		}
+		else
+		{
+			System.out.println("Something unexpected!");
+			System.exit(1);
+			return false;
+		}*/
+		
+	}
+	
+	//remove one lock if it is in this LockTableValue, and adjust currentList and waitingList
+	public String remove(String transactionID)
+	{
+		String re = "";
+		
+		if(currentList.contains(transactionID))
+		{
+			currentList.remove(transactionID);
+			
+			//deQueue from waitingList
+			if(waitingList.isEmpty())
+			{
+				return re;
+			}
+			else
+			{
+				if(currentList.isEmpty())
+				{
+					LockTableElement e = waitingList.remove();
+					currentList.add(e);
+					return e.getTransactionID();
+				}
+				else
+				{
+					LockTableElement e = waitingList.retrieve();
+					int currentSize = currentList.size();
+					for(int i = 0; i < currentSize; i++)
+					{
+						if(!compatible(e.getLockType(), currentList.get(i).getLockType()))
+						{
+							//waitingList.add(e);
+							return re;
+						}					
+					}
+					waitingList.remove();
+					currentList.add(e);
+					return e.getTransactionID();
+				}
+			}
+			/*
+			if(!currentList.isEmpty() || waitingList.isEmpty())
+				return re;
+			else
+			{
+				LockTableElement e = waitingList.remove();
+				currentList.add(e);
+				return e.getTransactionID();
+			}*/
+		}
+		else if(waitingList.contains(transactionID))
+		{
+			waitingList.remove(transactionID);
+			return re;
+		}
+		else
+		{
+			//System.out.println("This LockTableValue doesn't contain " + transactionID + "!");
+			return re;
+		}
+		
+	}
+	
+	public LockTableList getCurrentList()
+	{
+		return this.currentList;
+	}
+	
+	public LockTableList getWaitingList()
+	{
+		return this.waitingList;
+	}
+	
+	public String toString()
+	{
+		String s = "Current list: " + currentList;
+		s += "\t\t" + "Waiting list: " + waitingList;
+		return s;
+	}
+	/*
+	public static void main(String[] args)
+	{
+		LockTableValue ltv = new LockTableValue();
+		ltv.add(new LockTableElement("T1", 4));
+		System.out.println(ltv);
+		ltv.add(new LockTableElement("T2", 1));
+		System.out.println(ltv);
+		ltv.add(new LockTableElement("T3", 3));
+		System.out.println(ltv);
+		ltv.add(new LockTableElement("T1", 3));
+		System.out.println(ltv);
+		String s = ltv.remove("T4");
+		System.out.println(s + s.length());
+		System.out.println(ltv);
+		
+	}*/
+}

@@ -1,0 +1,298 @@
+package Scheduler;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Hashtable;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+import TransactionManager.*;
+import Common.*;
+import DataManager.*;
+
+
+public class Scheduler {
+	//TODO
+	
+	
+	public static StringBuffer SchedulerLogger = new StringBuffer();
+	private Logger log = Logger.getLogger(Scheduler.class.getName());
+
+	static int number_of_commit=0;
+	static int number_of_abort=0;
+	static int number_of_read=0;
+	static int number_of_write=0;
+	static int number_of_operation=0;
+	static float total_time=0;
+	
+	
+	public LockTable lockTable;
+	public TM tranManager;
+	public DM dataManager;
+	Hashtable<Integer,Integer> abortList;
+	ArrayList<Instruction> commit_list;
+	Hashtable<Integer, LockTableValue> lock_holder_waitting_list;
+	
+	
+	
+	/**
+	 * 
+	 * @param lockTable
+	 * @param tranManager
+	 * @param dataManager
+	 */
+	
+public Scheduler(LockTable lockTable, TM tranManager, DM dataManager) {
+	
+		this.lockTable = lockTable;
+		this.tranManager = tranManager;
+		this.dataManager=dataManager;
+		this.abortList=new Hashtable<Integer,Integer>();
+		this.commit_list=new ArrayList<Instruction>();
+		this.lock_holder_waitting_list=new Hashtable<Integer,LockTableValue>();
+	}
+
+//	TransactionManager tm = new TransactionManager();
+	
+	//pull a command from transaction manager
+	public Instruction pull_operation(){
+//		System.out.println("Pull 1 operation from Transaction Manager");
+		Instruction command=null;
+		
+//			System.out.println("hello1");
+			command=this.tranManager.loadNext();//.loadRNext();
+//			System.out.println("hello2");
+			if(command!=null){
+				System.out.println("Pull: TranID:"+command.transactionID+
+										" Opt_Type:"+command.command+
+										" File:"+command.table+
+										" timestamp:"+ command.timestamp+ "\n");
+				if(command.isReadCommand())
+					number_of_read++;
+				else if(command.isWriteCommand())
+					number_of_write++;
+				
+				number_of_operation++;
+			}
+		
+		
+		return command;
+	}
+	
+	//push a command to data manager
+	public void push_operation(Instruction cmd){
+		log.info("Push 1 operation to Data Manager");
+		//push the command to Data Manager to execute
+		log.info("TranID="+cmd.transactionID+" type:"+cmd.command
+							+" "+cmd.table+" row="+cmd.tidInFile+" timestamp:"+ cmd.timestamp+ "\n");
+		
+		
+		if(cmd.isCommitCommand())
+			number_of_commit++;
+		if(cmd.isAbortCommand())
+			number_of_abort++;
+		 
+		ArrayList<Instruction> cmdToDM=new ArrayList<Instruction>();
+		cmdToDM.add(cmd);
+		DM.execute(cmdToDM);
+	}
+	
+	public ArrayList<Instruction> sort_execute_list(ArrayList<Instruction> execute_list){
+		
+//		Arrays.sort(execute_list);
+		Collections.sort(execute_list);
+		return execute_list;
+	}
+	
+	public Instruction remove_current_commit_from_commit_list(ArrayList<Instruction> commit_list,Instruction cmd){
+		Instruction c=new Instruction();
+		for(int i=0; i<commit_list.size(); i++){
+			if(commit_list.get(i).transactionID.equals(cmd.transactionID)&&
+					commit_list.get(i).fileID==cmd.fileID&&
+					commit_list.get(i).tidInFile==cmd.tidInFile){
+				c=commit_list.get(i);
+				commit_list.remove(i);
+				break;
+			}
+		}
+		return c;
+	}
+	
+	public void CommandHandler(Instruction cmd){
+		boolean LockObtained=false;
+		if(cmd.isBeginCommand()){
+			//System.out.println("isTransaction="+cmd.isTransaction()+" "+cmd.getTransactionId());
+//			if(cmd.isTransaction()){
+//				TranTable.put(cmd.getTransactionId(),1);
+//			}else{
+//				ProcessTable.put(cmd.getTransactionId(),1);
+//			}
+		//System.out.println("TranTable size="+TranTable.size()+ " ProcessTable size="+ProcessTable.size());
+		} else if(cmd.isReadCommand()||cmd.isWriteCommand()||cmd.isDeleteCommand()||cmd.isMatchCommand()){
+
+			
+			LockObtained=this.lockTable.add(LockTableElement.CONSTRUCT_LTE(cmd), cmd.table);
+			
+//			DLM.updateWFG(WFG);
+			//2 reasons for LockObtaied=false
+			//1. deadlock; 2. waiting for the lock
+			if(LockObtained==true){//if can obtain lock, should be no deadlock
+				push_operation(cmd);
+			} else {
+				String deadLockID=this.lockTable.detectDeadlock();
+				if(!deadLockID.equals("")){
+//				if(false){
+					int victimTran=DLM.SelectVictim(WFG);
+					System.out.println("DeadLock! Abort Transaction "+victimTran);
+					log.info("DeadLock! Abort Transaction "+victimTran);
+					abortList.put(victimTran, 1);
+					
+					//abort the victimTran
+					//do I have to check the lock_table waiting list after resolve deadlock??
+					AbortCommand cmd1 = (AbortCommand)CommandFactory.makeCommand(Instruction.ABORT);
+					cmd1.setTransactionId(victimTran);
+					LM.WFGDeleteEdge(WFG,cmd);//delete all outgoing edge of the victim
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					//just copy the code from abort
+//					CommandHandler(cmd1,lock_table,lock_holder_waitting_list,commit_list,WFG,LM,DLM);
+					//LM.ReleaseLock also checked what operation(s) can acquire lock after someone releases lock(s)
+					ArrayList<Instruction> execute_list= this.lockTable.ReleaseLock(cmd1,lock_table,lock_holder_waitting_list,ComTable,
+																WFG,DLM,true,file_lock_table,TranTable,ProcessTable);
+					push_operation(cmd1);
+					lock_holder_waitting_list.remove(victimTran);
+					
+					if(execute_list!=null){
+						execute_list=sort_execute_list(execute_list);
+						for(int i=0; i< execute_list.size();i++)
+							push_operation(execute_list.get(i));
+					}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				}
+			}
+		} else if(cmd.isCommitCommand()) {//*only time that waiting tran can obtain lock is when someone commit
+			if(this.check_all_prior_operation_finish(cmd,lock_table,lock_holder_waitting_list,ComTable,file_lock_table)){
+//			if(LM.check_all_prior_operation_finish(cmd,lock_table,lock_holder_waitting_list,ComTable,file_lock_table)){
+				//LM.ReleaseLock also checked what operation(s) can acquire lock after someone releases lock(s)
+				ArrayList<Instruction> execute_list= LM.ReleaseLock(cmd,lock_table,lock_holder_waitting_list,ComTable,WFG,
+																DLM,false,file_lock_table,TranTable,ProcessTable);
+				push_operation(cmd);
+				
+				if(execute_list!=null){
+					execute_list=sort_execute_list(execute_list);
+					for(int i=0; i< execute_list.size();i++)
+						push_operation(execute_list.get(i),DM);
+				}
+				
+				//check_commit_list see any transaction can commit
+				int size=commit_list.size();
+				System.out.println("commit_list.size()="+commit_list.size());
+//				for(int i=0; i<size; i++){
+				int i=0,s=0;
+				while(commit_list.size()!=0&&i<commit_list.size()&&i>=0){
+					System.out.println("i="+i);
+					if(LM.check_all_prior_operation_finish(commit_list.get(i),lock_table,lock_holder_waitting_list,ComTable,file_lock_table)){
+						//LM.ReleaseLock also checked what operation(s) can acquire lock after someone commit and releases lock(s)
+						ArrayList<Instruction> execute_list2= LM.ReleaseLock(commit_list.get(i),lock_table,lock_holder_waitting_list,ComTable,WFG,
+																			DLM,false,file_lock_table,TranTable,ProcessTable);
+						System.out.println("\n com list+++++TranID="+commit_list.get(i).transactionID
+								  +" type:"+commit_list.get(i).command
+								  +" "+commit_list.get(i).table
+								  +" row="+commit_list.get(i).tidInFile);
+						System.out.println("execute_list2="+execute_list2.size());
+						push_operation(commit_list.get(i));
+						commit_list.remove(i);
+						i--; //size--;
+						
+						if(execute_list2!=null){
+							execute_list2=sort_execute_list(execute_list2);
+							for(int j=0; j< execute_list2.size();j++)
+								push_operation(execute_list2.get(j));
+						}
+					}else
+						//s++;
+						i++;
+				}
+				//may need changes here!!!!
+				System.out.println("realease lock: commit list end commit_list.size()="+commit_list.size());
+				int size2=commit_list.size();
+				for(int i1=0; i1<size2; i1++){
+					if(LM.check_all_prior_operation_finish(commit_list.get(i1),lock_table,lock_holder_waitting_list,ComTable,file_lock_table)){
+						ArrayList<Instruction> execute_list2= LM.ReleaseLock(commit_list.get(i1),lock_table,lock_holder_waitting_list,ComTable,WFG,
+																		DLM,false,file_lock_table,TranTable,ProcessTable);
+						push_operation(commit_list.get(i1));
+						commit_list.remove(i1);
+						i1--; size2--;
+					}
+				}
+				System.out.println("realease lock: commit list end commit_list.size()="+commit_list.size());
+			} else {
+				//put the commit command into commit_list
+				System.out.println("Put into commit_list TranID="+cmd.transactionID
+														  +" type:"+cmd.command
+														  +" "+cmd.table
+														  +" row="+cmd.tidInFile);
+				commit_list.add(cmd);
+				System.out.println("commit_list.size()="+commit_list.size());
+			}
+		} else if(cmd.isAbortCommand()){
+			//LM.ReleaseLock also checked what operation(s) can acquire lock after someone releases lock(s)
+			ArrayList<Instruction> execute_list= this.lockTable.ReleaseLock(cmd,lock_table,lock_holder_waitting_list,ComTable,WFG,DLM,true,
+															file_lock_table,TranTable,ProcessTable);
+			push_operation(cmd);
+			
+			if(execute_list!=null){
+				execute_list=sort_execute_list(execute_list);
+				for(int i=0; i< execute_list.size();i++)
+					push_operation(execute_list.get(i));
+			}
+		} /*else if(cmd.isMatchCommand()){
+			//WFG updated in AcquireLock
+			LockObtained=LM.AcquireLock(cmd,lock_table,lock_holder_waitting_list,ComTable,false,WFG,DLM,file_lock_table);
+		} else if(cmd.isDeleteCommand()){
+			
+		}*/
+	}
+	
+	public boolean CheckAbortedList(Instruction cmd,Hashtable<Integer,Integer> abortList){
+		if(abortList.get(cmd.transactionID)!=null){
+			System.out.println("Aborted!");
+			return false;
+		}else
+			return true;
+	}
+	
+
+	public void Schedule_Transactions(){
+		
+		try {
+			FileHandler filehandler  = new FileHandler("scheduler.log",true);
+			filehandler.setFormatter(new SimpleFormatter());
+			log.addHandler(filehandler);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("STart scheduling transaction");
+
+		float startTime=System.nanoTime();//.currentTimeMillis();
+		Instruction command=pull_operation();
+		while(command!=null) {
+			if(CheckAbortedList(command,abortList)==true){//no need to handle all aborted transaction operation
+				//commandHandler return which command to execute next
+				CommandHandler(command);
+			}
+			System.out.println("");
+			command=pull_operation();
+		}
+		float endTime=System.nanoTime();//.currentTimeMillis();
+		total_time=endTime-startTime;
+		log.info("number of commit="+ number_of_commit+ " number_of_abort="+number_of_abort + " number of read="+number_of_read
+				+" nnumber_of_write="+number_of_write+" total_number_of_operation="+number_of_operation
+				+ " average response time="+total_time/number_of_operation +" nano second");
+	}
+}

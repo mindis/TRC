@@ -1,0 +1,51 @@
+package Scheduler;
+//element for lock table
+//<transactionID, lockType>
+//LockType: <1, IS> <2, IX> <3, S> <4, X>
+public class LockTableElement
+{
+	private String transactionID;
+	private int lockType;
+	
+	public LockTableElement(String transactionID, int lockType)
+	{
+		this.transactionID = transactionID;
+		this.lockType = lockType;
+	}
+	
+	public String getTransactionID()
+	{
+		return transactionID;
+	}
+	
+	public int getLockType()
+	{
+		return lockType;
+	}
+	
+	public void setLockType(int lockType)
+	{
+		this.lockType = lockType;
+	}
+	
+	public boolean equals(LockTableElement e)
+	{
+		if(this.transactionID.equals(e.getTransactionID()) && this.lockType == e.getLockType())
+			return true;
+		else
+			return false;
+	}
+	
+	public String toString()
+	{
+		String s = "<" + transactionID + ", " + lockType + ">";
+		return s;
+	}
+	/*
+	public static void main(String[] args)
+	{
+		LockTableElement lte = new LockTableElement("T1", 2);
+		System.out.println(lte.equals(new LockTableElement("T1", 2)));
+		System.out.println(lte.equals(new LockTableElement("T1", 1)));
+	}*/
+}

@@ -1,0 +1,19 @@
+package DataManager;
+
+public class DMLog {
+
+	int type = 0; //0 for statistics, 1 for recovery 
+	
+	String transactionID;
+	
+	String operation;
+	
+	String table;
+	
+	TupleImage beforeTupleImage;
+	
+	TupleImage afterTupleImage;
+	
+
+}
+

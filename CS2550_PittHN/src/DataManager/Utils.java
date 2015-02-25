@@ -1,0 +1,355 @@
+package DataManager;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import Common.Instruction;
+
+public class Utils {
+	public static int loadDiskPageToL2(int diskPage){
+		int l2Page = (int) findEmptyPageInL2(1).get(0);
+		Page page = Disk.diskPages[diskPage];
+		
+		L2_delta.buffer[l2Page] = page;
+		L2_delta.pageAvailability[l2Page] = Disk.pageAvailability[diskPage];
+		if(L2_delta.tablePages.get(page.storeKey)==null){
+			System.out.println();
+		}
+		L2_delta.tablePages.get(page.storeKey).add(l2Page);
+		
+		Disk.tablePages.get(page.storeKey).remove(new Integer(diskPage));
+		Disk.diskPages[diskPage] = null;
+		Disk.pageAvailability[diskPage] = 0;
+
+		
+		return l2Page;
+	}
+	
+	/*
+	 * Merge from L1 to L2
+	 */
+	public static void L1_L2_Merge(){
+		HashMap tuples = new HashMap(); 
+		for(int i=0;i<DM.L1_SIZE;i++){
+			if(L1_delta.pageAvailability[i]>0){
+				Page page = L1_delta.buffer[i];
+				if(tuples.get(page.tableName)==null){
+					tuples.put(page.tableName, new ArrayList());
+				}
+				((ArrayList)tuples.get(page.tableName)).addAll(page.records);
+			}
+		}
+	
+		int requiredL2Pages = 0;
+		Iterator iter = tuples.entrySet().iterator();
+		while(iter.hasNext()){
+			Entry entry = (Entry) iter.next();
+			String key = (String) entry.getKey();
+			ArrayList list = (ArrayList) entry.getValue();
+			int pageOfCol1 =  findOneAvailablePageInL2(key+"-"+"ClientName");
+			Page page1 = L2_delta.buffer[pageOfCol1];
+			int pageOfCol2 =  findOneAvailablePageInL2(key+"-"+"Phone");
+			Page page2 = L2_delta.buffer[pageOfCol2];
+			for(int i=0;i<list.size();i++){
+				Tuple t = (Tuple) list.get(i);
+				page1.records.add(new Tuple(t.ID,t.ClientName,""));
+				page2.records.add(new Tuple(t.ID,"",t.Phone));
+				
+				if(page1.records.size()==DM.L2_PAGE_SIZE1){
+					L2_delta.pageAvailability[pageOfCol1]=2;
+					pageOfCol1 =  findOneAvailablePageInL2(key+"-"+"ClientName");
+					page1 = L2_delta.buffer[pageOfCol1];
+				}
+				
+				if(page2.records.size()==DM.L2_PAGE_SIZE2){
+					L2_delta.pageAvailability[pageOfCol2]=2;
+					pageOfCol2 =  findOneAvailablePageInL2(key+"-"+"Phone");
+					page2 = L2_delta.buffer[pageOfCol2];
+				}
+				
+			}
+			
+		}
+		
+		L1_delta.clear();
+	
+	}
+	
+	
+	public static int getL2LSUPage(){
+		int result = -1;
+		long lsuTS = 0;
+		int counter;
+		for(counter=0;counter<L2_delta.pageAvailability.length;counter++){
+			if(L2_delta.pageAvailability[counter]>0){
+				lsuTS = L2_delta.buffer[counter].ts;
+				result = counter;
+				break;
+			}
+		}
+		
+		for(int i=counter+1;i<L2_delta.pageAvailability.length;i++){
+			if(L2_delta.pageAvailability[i]>0){
+				if(lsuTS>(L2_delta.buffer[i].ts)){
+					lsuTS = L2_delta.buffer[i].ts;
+					result = i;
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	public static int findAvailablePageInDisk(){
+		int result = -1;
+		for(int i=0;i<Disk.pageAvailability.length;i++){
+			if(Disk.pageAvailability[i]==0){
+				result = i;
+				break;
+			}
+		}
+		
+		if(result==-1){//No empty page in disk, expand disk size.
+			int oldSize = Disk.DISK_SIZE;
+			Disk.DISK_SIZE = oldSize * 2;
+			Disk.diskPages = Arrays.copyOf(Disk.diskPages, Disk.DISK_SIZE);
+			Disk.pageAvailability = Arrays.copyOf(Disk.pageAvailability, Disk.DISK_SIZE);
+			result = oldSize;
+		}
+		
+		return result;
+	}
+	
+	public static int findAvailablePageInL1(String table){
+		int result = -1;
+		
+		//Find non-empty page which has been used for the specified table
+		ArrayList pages = L1_delta.tablePages.get(table);
+		for(int i=0;i<pages.size();i++){
+			int index = (int) pages.get(i);
+			if(L1_delta.pageAvailability[index]==1){
+				return  index;
+			}
+		}
+		
+		//Find an empty page in L1 and add it to table map management
+		if(result==-1){
+			for(int i=0;i<L1_delta.pageAvailability.length;i++){
+				if(L1_delta.pageAvailability[i]==0){
+					result = i;
+					break;
+				}
+			}
+		}
+		
+		if(result==-1){
+			Utils.L1_L2_Merge();
+			result = 0;
+		}
+		
+		L1_delta.buffer[result] = new Page(table,0);
+		L1_delta.pageAvailability[result] = 1;
+		L1_delta.tablePages.get(table).add(result);
+		
+		return result;
+	}
+	
+	/*
+	 * Get an available page in L2 and mark it as used
+	 */
+	public static int findOneAvailablePageInL2(String storeKey){
+		ArrayList usedPages = L2_delta.tablePages.get(storeKey);
+		if(usedPages!=null && usedPages.size()>0){
+			for(int i=0;i<usedPages.size();i++){
+				if(L2_delta.pageAvailability[(int) usedPages.get(i)]<2){
+					return i;
+				}
+			}
+		}
+		for(int i=0;i<L2_delta.pageAvailability.length;i++){
+			if(L2_delta.pageAvailability[i]==0){
+				L2_delta.pageAvailability[i]=1;
+				L2_delta.tablePages.get(storeKey).add(i);
+				L2_delta.buffer[i] = new Page(storeKey,1);
+				return i;
+			}
+		}
+		
+		return flushL2PageToDisk();
+	}
+	
+	public static ArrayList findEmptyPageInL2(int number){
+		//check if L2 has specified number of available pages
+		ArrayList result = new ArrayList();
+		int l2available = 0;
+		for(int i=0;i<L2_delta.pageAvailability.length;i++){
+			if(L2_delta.pageAvailability[i]==0){
+				result.add(i);
+				l2available++;
+				if(l2available==number)
+					break;
+			}
+		}
+		if(l2available==number)
+			return result;
+		else{
+			int tmp = number - l2available;
+			for(int i=0;i<tmp;i++){
+				result.add(flushL2PageToDisk());
+			}
+		}
+		
+		return result;
+			
+	}
+	
+
+	
+	/*
+	 * Flush LSU page in L2-delta to Main Disk
+	 * return lsu page id of L2
+	 */
+	public static int flushL2PageToDisk(){
+		int lsu = getL2LSUPage();
+		int dest = findAvailablePageInDisk();
+		Page l2Page = L2_delta.buffer[lsu];
+		Disk.diskPages[dest] = l2Page;
+		Disk.pageAvailability[dest] = L2_delta.pageAvailability[lsu];
+		Disk.tablePages.get(l2Page.storeKey).add(dest);
+		L2_delta.buffer[lsu] = null;
+		L2_delta.pageAvailability[lsu] = 0;
+		L2_delta.tablePages.get(l2Page.storeKey).remove(new Integer(lsu));
+				
+		return lsu;
+	}
+	
+
+	private static void flushFixedL2PageToDisk(int index){
+		int dest = findAvailablePageInDisk();
+		Page l2Page = L2_delta.buffer[index];
+		Disk.diskPages[dest] = l2Page;
+		Disk.pageAvailability[dest] = L2_delta.pageAvailability[index];
+		Disk.tablePages.get(l2Page.storeKey).add(dest);
+		L2_delta.buffer[index] = null;
+		L2_delta.pageAvailability[index] = 0;
+		L2_delta.tablePages.get(l2Page.storeKey).remove(new Integer(index));
+	}
+	
+	public static void flushAllL2ToDisk(){
+		for(int i=0;i<L2_delta.pageAvailability.length;i++){
+			if(L2_delta.pageAvailability[i]>0){
+				flushFixedL2PageToDisk(i);
+			}
+		}
+	}
+	
+	
+	public static void WriteDiskFile(){
+		Iterator iter = Disk.tablePages.entrySet().iterator();
+		while(iter.hasNext()){
+			Entry entry = (Entry) iter.next();
+			String key = (String) entry.getKey();
+			ArrayList pageList = (ArrayList) entry.getValue();
+			StringBuffer sbf = new StringBuffer();
+			if(key.endsWith("Phone")){
+				for(int i=0;i<pageList.size();i++){
+					Page page = Disk.diskPages[(int) pageList.get(i)];
+					if(!page.checkIfDeleted()){
+						sbf.append("\n-------------------------------\n");
+						sbf.append("       ");
+						sbf.append("Disk Page ["+(int) pageList.get(i)+"]");
+						sbf.append("   \n-------------------------------\n");
+					
+						Iterator it = page.records.iterator();
+						while(it.hasNext()){
+							Tuple t = (Tuple) it.next();
+							sbf.append(t.ID+"    "+t.Phone+"\n");
+						}
+					}
+					
+				}
+			}else{
+				for(int i=0;i<pageList.size();i++){
+					Page page = Disk.diskPages[(int) pageList.get(i)];
+					if(!page.checkIfDeleted()){
+						sbf.append("\n-------------------------------\n");
+						sbf.append("       ");
+						sbf.append("Disk Page ["+(int) pageList.get(i)+"]");
+						sbf.append("   \n-------------------------------\n");
+						
+						Iterator it = page.records.iterator();
+						while(it.hasNext()){
+							Tuple t = (Tuple) it.next();
+							sbf.append(t.ID+"    "+t.ClientName+"\n");
+						}
+					}
+				}
+			}
+			
+			String fileName = "DiskStore/"+key+".txt";
+			try{
+				BufferedWriter out=new BufferedWriter(new FileWriter(fileName));
+				out.write(sbf.toString());
+				out.close();
+			}catch(IOException e){
+				 e.printStackTrace();
+			}
+			
+			
+		}
+	}
+	
+	public static ArrayList loadData(String[] tableFiles){
+		System.out.println("Load initial data from table files. There are "+tableFiles.length+" tables.");
+		ArrayList instructionList = new ArrayList();
+		instructionList.add(new Instruction(-1,-1, "B 1","B","1",""));
+		System.out.println("Load initialization data to the database.");
+		for(int i=0;i<tableFiles.length;i++){
+			File file = new File("test/"+tableFiles[i]+".txt");
+			BufferedReader reader = null;
+	        try {
+	            reader = new BufferedReader(new FileReader(file));
+	            String tempString = null;
+	            while ((tempString = reader.readLine()) != null) {
+	                if(tempString.trim().length()>0){
+	                	instructionList.add(new Instruction(-1,-1, "W "+tableFiles[i]+" ("+tempString+")"
+	                			,"W",tableFiles[i],tempString.trim()));
+	                }
+	            }
+	            reader.close();
+	        } catch (IOException e) {
+	            System.out.println("Error: file "+tableFiles[i]+".txt is not found in test directory!");
+	            continue;
+	        } finally {
+	            if (reader != null) {
+	                try {
+	                    reader.close();
+	                } catch (IOException e1) {
+	                }
+	            }
+	        }
+		}
+		
+	//	instructionList.add(new Instruction(-1,-1, "C","C","","")); 
+		
+		instructionList.add(new Instruction(-1,-1, "E","E","","")); //Flush to disk
+		return instructionList;
+	}
+	
+	
+	public static long getCurrentTime(){
+		return System.nanoTime();
+	}
+}

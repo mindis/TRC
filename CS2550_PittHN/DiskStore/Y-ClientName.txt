@@ -1,0 +1,2348 @@
+
+-------------------------------
+       Disk Page [0]   
+-------------------------------
+753    Seras
+1598    Jet
+617    Lodoss
+1155    Faye
+397    Spike
+1315    Hellsing
+1912    Deedlit
+1064    Deedlit
+805    Parn
+1472    Bebop
+737    Alucard
+329    Seras
+524    Lodoss
+20    Lodoss
+1433    Alucard
+1428    Alucard
+1914    Hellsing
+845    Faye
+1781    Alucard
+565    Parn
+2    Faye
+966    Deedlit
+75    Deedlit
+
+-------------------------------
+       Disk Page [1]   
+-------------------------------
+859    Seras
+331    Ed
+1695    Bebop
+416    Deedlit
+1858    Ed
+90    Spike
+1220    Alucard
+314    Deedlit
+584    Spike
+1140    Deedlit
+1539    Parn
+1887    Lodoss
+1612    Spike
+512    Parn
+202    Spike
+883    Lodoss
+1769    Seras
+627    Lodoss
+406    Hellsing
+445    Seras
+590    Alucard
+1041    Seras
+1172    Seras
+
+-------------------------------
+       Disk Page [2]   
+-------------------------------
+1410    Alucard
+1913    Lodoss
+1666    Alucard
+1778    Deedlit
+343    Jet
+262    Alucard
+473    Jet
+591    Deedlit
+722    Faye
+1156    Lodoss
+1373    Bebop
+1221    Hellsing
+504    Jet
+1007    Alucard
+371    Bebop
+244    Spike
+1791    Alucard
+1702    Lodoss
+1297    Deedlit
+489    Spike
+829    Parn
+1013    Deedlit
+316    Spike
+
+-------------------------------
+       Disk Page [5]   
+-------------------------------
+1138    Hellsing
+342    Lodoss
+203    Seras
+1401    Faye
+268    Parn
+1697    Jet
+516    Lodoss
+159    Lodoss
+1908    Jet
+99    Ed
+1743    Hellsing
+1650    Jet
+1928    Faye
+865    Hellsing
+600    Parn
+1785    Parn
+1703    Deedlit
+1809    Seras
+654    Jet
+1384    Seras
+1435    Hellsing
+1929    Faye
+1341    Hellsing
+
+-------------------------------
+       Disk Page [6]   
+-------------------------------
+693    Parn
+772    Spike
+221    Faye
+468    Seras
+1942    Lodoss
+1568    Hellsing
+756    Deedlit
+751    Lodoss
+511    Faye
+1882    Bebop
+226    Spike
+1053    Alucard
+488    Faye
+1826    Lodoss
+190    Ed
+362    Faye
+1557    Spike
+1653    Bebop
+846    Deedlit
+293    Lodoss
+1563    Bebop
+415    Lodoss
+1092    Spike
+
+-------------------------------
+       Disk Page [7]   
+-------------------------------
+1370    Alucard
+1153    Deedlit
+143    Bebop
+1209    Seras
+1544    Parn
+1003    Lodoss
+723    Spike
+930    Alucard
+827    Deedlit
+815    Faye
+1429    Hellsing
+259    Deedlit
+1986    Alucard
+291    Bebop
+1191    Hellsing
+707    Ed
+521    Parn
+1788    Ed
+179    Ed
+679    Deedlit
+399    Ed
+1759    Seras
+969    Alucard
+
+-------------------------------
+       Disk Page [8]   
+-------------------------------
+517    Jet
+17    Seras
+35    Jet
+407    Jet
+896    Spike
+1835    Seras
+685    Spike
+1654    Jet
+1056    Hellsing
+1085    Deedlit
+1345    Seras
+328    Lodoss
+266    Bebop
+531    Ed
+1878    Seras
+1177    Parn
+612    Alucard
+890    Alucard
+946    Lodoss
+471    Parn
+82    Parn
+785    Faye
+825    Spike
+
+-------------------------------
+       Disk Page [9]   
+-------------------------------
+718    Alucard
+1403    Jet
+916    Hellsing
+417    Alucard
+1997    Ed
+820    Deedlit
+1250    Seras
+1071    Ed
+1409    Parn
+1987    Lodoss
+1704    Ed
+1226    Lodoss
+743    Alucard
+1579    Deedlit
+1187    Hellsing
+1239    Jet
+1599    Spike
+1028    Lodoss
+624    Deedlit
+858    Lodoss
+898    Jet
+1747    Spike
+1662    Bebop
+
+-------------------------------
+       Disk Page [10]   
+-------------------------------
+1915    Alucard
+1665    Deedlit
+302    Bebop
+1705    Ed
+509    Ed
+1916    Jet
+1801    Ed
+0    Seras
+408    Hellsing
+1046    Jet
+1179    Alucard
+960    Jet
+1134    Bebop
+711    Seras
+1402    Hellsing
+838    Bebop
+1624    Ed
+457    Alucard
+1400    Ed
+463    Faye
+1418    Bebop
+650    Seras
+1070    Hellsing
+
+-------------------------------
+       Disk Page [11]   
+-------------------------------
+186    Alucard
+217    Hellsing
+1382    Seras
+1105    Seras
+420    Bebop
+684    Alucard
+1196    Parn
+1430    Seras
+1386    Alucard
+151    Bebop
+1001    Jet
+673    Alucard
+89    Faye
+1265    Lodoss
+1531    Hellsing
+826    Lodoss
+672    Parn
+350    Faye
+494    Seras
+1940    Jet
+1756    Bebop
+500    Jet
+866    Bebop
+
+-------------------------------
+       Disk Page [12]   
+-------------------------------
+391    Deedlit
+154    Spike
+490    Jet
+1378    Seras
+1111    Jet
+1447    Faye
+562    Seras
+1516    Alucard
+1050    Ed
+1810    Faye
+1796    Parn
+513    Ed
+1158    Parn
+104    Parn
+1318    Hellsing
+327    Bebop
+1343    Ed
+1030    Parn
+1884    Seras
+546    Seras
+860    Bebop
+794    Spike
+429    Bebop
+
+-------------------------------
+       Disk Page [13]   
+-------------------------------
+1806    Jet
+1793    Lodoss
+337    Alucard
+1181    Seras
+455    Hellsing
+981    Hellsing
+376    Alucard
+18    Spike
+540    Seras
+573    Spike
+303    Lodoss
+1970    Spike
+1979    Bebop
+1792    Spike
+1569    Deedlit
+1394    Bebop
+383    Bebop
+1231    Deedlit
+1595    Deedlit
+1404    Parn
+1208    Parn
+659    Parn
+1805    Alucard
+
+-------------------------------
+       Disk Page [14]   
+-------------------------------
+1289    Jet
+1282    Jet
+1010    Hellsing
+803    Ed
+1917    Faye
+1851    Jet
+175    Jet
+1450    Hellsing
+978    Jet
+1457    Parn
+1122    Lodoss
+1969    Bebop
+1765    Parn
+1281    Seras
+1407    Faye
+1509    Spike
+553    Deedlit
+520    Alucard
+780    Ed
+1683    Faye
+1668    Bebop
+852    Faye
+847    Seras
+
+-------------------------------
+       Disk Page [15]   
+-------------------------------
+1033    Parn
+1259    Bebop
+180    Bebop
+124    Faye
+1636    Jet
+821    Spike
+1602    Parn
+153    Jet
+626    Faye
+164    Parn
+351    Seras
+1149    Seras
+384    Faye
+1536    Alucard
+1845    Deedlit
+1932    Faye
+1052    Alucard
+1583    Hellsing
+1445    Parn
+587    Seras
+1875    Lodoss
+1014    Hellsing
+875    Alucard
+
+-------------------------------
+       Disk Page [16]   
+-------------------------------
+1249    Faye
+292    Hellsing
+1800    Jet
+1012    Seras
+900    Ed
+1290    Parn
+1006    Jet
+910    Lodoss
+1543    Deedlit
+1587    Jet
+765    Jet
+1959    Lodoss
+49    Alucard
+1534    Seras
+632    Hellsing
+1372    Deedlit
+1560    Alucard
+1000    Jet
+1431    Bebop
+891    Bebop
+96    Bebop
+462    Seras
+144    Faye
+
+-------------------------------
+       Disk Page [17]   
+-------------------------------
+479    Parn
+448    Ed
+62    Seras
+213    Spike
+1802    Lodoss
+1389    Deedlit
+629    Bebop
+1008    Bebop
+1637    Lodoss
+1532    Parn
+1713    Alucard
+1296    Parn
+704    Deedlit
+995    Lodoss
+592    Ed
+1889    Hellsing
+1145    Lodoss
+1768    Hellsing
+1565    Lodoss
+1960    Ed
+1613    Seras
+607    Faye
+280    Alucard
+
+-------------------------------
+       Disk Page [18]   
+-------------------------------
+965    Spike
+1638    Alucard
+1408    Ed
+1982    Faye
+1395    Faye
+39    Spike
+925    Ed
+732    Seras
+344    Bebop
+1322    Ed
+1581    Bebop
+1136    Spike
+307    Deedlit
+334    Jet
+1159    Deedlit
+727    Alucard
+464    Faye
+1057    Alucard
+1984    Bebop
+1696    Spike
+241    Jet
+1005    Seras
+76    Seras
+
+-------------------------------
+       Disk Page [19]   
+-------------------------------
+837    Alucard
+525    Seras
+996    Bebop
+1745    Faye
+615    Deedlit
+393    Parn
+1633    Lodoss
+150    Lodoss
+1203    Spike
+1918    Lodoss
+1906    Ed
+1838    Jet
+1029    Faye
+168    Alucard
+596    Seras
+1857    Hellsing
+1083    Seras
+1782    Parn
+1797    Hellsing
+1379    Jet
+1588    Hellsing
+1897    Deedlit
+1459    Spike
+
+-------------------------------
+       Disk Page [20]   
+-------------------------------
+842    Bebop
+1419    Spike
+1405    Spike
+299    Jet
+1919    Alucard
+1198    Bebop
+618    Parn
+1227    Spike
+510    Jet
+700    Hellsing
+1489    Bebop
+1167    Bebop
+1157    Seras
+162    Lodoss
+1892    Ed
+534    Lodoss
+437    Alucard
+558    Lodoss
+1017    Bebop
+653    Spike
+1383    Hellsing
+1054    Bebop
+1269    Faye
+
+-------------------------------
+       Disk Page [21]   
+-------------------------------
+1618    Lodoss
+335    Hellsing
+1594    Alucard
+862    Bebop
+1777    Deedlit
+609    Parn
+806    Deedlit
+970    Parn
+1497    Bebop
+1349    Seras
+1998    Faye
+1659    Seras
+1160    Deedlit
+1232    Bebop
+352    Spike
+1499    Faye
+1641    Deedlit
+438    Bebop
+404    Deedlit
+848    Seras
+1406    Spike
+606    Ed
+1535    Jet
+
+-------------------------------
+       Disk Page [22]   
+-------------------------------
+616    Parn
+269    Spike
+1517    Alucard
+121    Lodoss
+255    Spike
+1930    Deedlit
+71    Parn
+1011    Lodoss
+395    Hellsing
+304    Spike
+484    Alucard
+778    Faye
+1150    Jet
+526    Alucard
+120    Bebop
+619    Deedlit
+224    Seras
+1616    Hellsing
+441    Lodoss
+1458    Hellsing
+263    Parn
+1941    Faye
+1197    Bebop
+
+-------------------------------
+       Disk Page [23]   
+-------------------------------
+93    Spike
+630    Faye
+1961    Ed
+904    Ed
+77    Faye
+210    Faye
+1784    Seras
+1937    Ed
+1610    Parn
+532    Ed
+691    Jet
+380    Spike
+1783    Spike
+1537    Alucard
+294    Jet
+1856    Bebop
+1100    Lodoss
+649    Spike
+703    Spike
+1186    Bebop
+1114    Ed
+505    Jet
+1291    Ed
+
+-------------------------------
+       Disk Page [24]   
+-------------------------------
+1255    Lodoss
+222    Seras
+561    Hellsing
+775    Seras
+325    Spike
+22    Ed
+1241    Lodoss
+50    Hellsing
+1202    Seras
+1135    Parn
+1079    Parn
+631    Faye
+610    Seras
+1988    Alucard
+223    Bebop
+1669    Bebop
+156    Parn
+1767    Spike
+1480    Seras
+986    Jet
+1493    Faye
+834    Alucard
+502    Parn
+
+-------------------------------
+       Disk Page [25]   
+-------------------------------
+355    Jet
+1026    Hellsing
+388    Alucard
+1439    Seras
+542    Deedlit
+1898    Faye
+1051    Bebop
+1481    Bebop
+1545    Deedlit
+385    Seras
+675    Seras
+777    Lodoss
+206    Hellsing
+1242    Alucard
+1739    Alucard
+295    Deedlit
+1999    Hellsing
+1888    Deedlit
+1471    Ed
+19    Hellsing
+1786    Bebop
+1285    Bebop
+1501    Spike
+
+-------------------------------
+       Disk Page [26]   
+-------------------------------
+1909    Bebop
+997    Spike
+688    Alucard
+708    Alucard
+1943    Parn
+1314    Lodoss
+1446    Deedlit
+1168    Lodoss
+854    Alucard
+1121    Lodoss
+1324    Hellsing
+1072    Spike
+63    Faye
+1470    Seras
+952    Faye
+1596    Hellsing
+819    Lodoss
+277    Faye
+495    Bebop
+296    Seras
+1755    Seras
+1526    Parn
+472    Spike
+
+-------------------------------
+       Disk Page [27]   
+-------------------------------
+1424    Hellsing
+9    Lodoss
+588    Hellsing
+855    Faye
+48    Hellsing
+533    Seras
+1462    Deedlit
+1859    Parn
+1655    Lodoss
+148    Alucard
+1460    Seras
+604    Hellsing
+1873    Jet
+155    Spike
+458    Bebop
+783    Jet
+909    Lodoss
+514    Spike
+1183    Alucard
+14    Hellsing
+1399    Alucard
+1414    Faye
+110    Spike
+
+-------------------------------
+       Disk Page [28]   
+-------------------------------
+95    Hellsing
+1502    Jet
+1734    Seras
+1893    Parn
+792    Parn
+1151    Ed
+405    Bebop
+1454    Faye
+749    Hellsing
+1254    Bebop
+182    Jet
+204    Parn
+485    Deedlit
+1346    Deedlit
+641    Alucard
+1639    Spike
+165    Faye
+1    Bebop
+91    Alucard
+1807    Deedlit
+1985    Lodoss
+1567    Spike
+1128    Ed
+
+-------------------------------
+       Disk Page [29]   
+-------------------------------
+1015    Ed
+418    Seras
+1371    Hellsing
+386    Alucard
+366    Deedlit
+651    Jet
+1938    Faye
+1350    Parn
+1839    Hellsing
+544    Hellsing
+1264    Deedlit
+1505    Ed
+1491    Alucard
+1337    Parn
+694    Jet
+1256    Ed
+279    Spike
+443    Alucard
+412    Spike
+332    Faye
+697    Hellsing
+956    Lodoss
+1270    Lodoss
+
+-------------------------------
+       Disk Page [30]   
+-------------------------------
+1813    Spike
+1623    Alucard
+433    Lodoss
+715    Lodoss
+634    Ed
+446    Parn
+336    Faye
+608    Bebop
+1871    Seras
+1020    Hellsing
+396    Lodoss
+938    Lodoss
+1737    Alucard
+911    Hellsing
+541    Jet
+844    Lodoss
+1570    Faye
+1488    Alucard
+105    Deedlit
+67    Spike
+133    Deedlit
+770    Spike
+1235    Jet
+
+-------------------------------
+       Disk Page [31]   
+-------------------------------
+363    Hellsing
+401    Seras
+1280    Bebop
+563    Hellsing
+867    Bebop
+361    Lodoss
+1411    Bebop
+764    Spike
+1736    Alucard
+931    Parn
+537    Bebop
+1926    Faye
+1671    Ed
+1074    Jet
+719    Bebop
+53    Ed
+1614    Ed
+990    Faye
+1525    Deedlit
+319    Lodoss
+1657    Ed
+364    Ed
+1821    Ed
+
+-------------------------------
+       Disk Page [32]   
+-------------------------------
+1770    Hellsing
+1415    Alucard
+256    Faye
+530    Hellsing
+538    Jet
+264    Bebop
+1106    Parn
+1667    Lodoss
+933    Alucard
+181    Hellsing
+740    Faye
+1082    Deedlit
+1874    Ed
+1131    Deedlit
+735    Faye
+297    Faye
+1732    Lodoss
+683    Hellsing
+216    Jet
+1084    Hellsing
+884    Deedlit
+1490    Spike
+1634    Alucard
+
+-------------------------------
+       Disk Page [33]   
+-------------------------------
+94    Jet
+851    Parn
+205    Spike
+278    Lodoss
+207    Bebop
+1754    Parn
+536    Ed
+1238    Seras
+766    Jet
+655    Seras
+1731    Spike
+281    Seras
+1432    Faye
+1027    Bebop
+1130    Faye
+1222    Alucard
+1188    Seras
+1808    Faye
+267    Hellsing
+272    Jet
+597    Seras
+25    Parn
+1442    Spike
+
+-------------------------------
+       Disk Page [34]   
+-------------------------------
+894    Alucard
+1673    Parn
+486    Ed
+1247    Parn
+1189    Alucard
+1549    Jet
+1065    Jet
+1086    Jet
+1180    Bebop
+527    Faye
+1466    Parn
+637    Parn
+1365    Parn
+1978    Alucard
+656    Seras
+1081    Bebop
+1753    Deedlit
+1950    Seras
+1580    Seras
+895    Parn
+188    Seras
+1771    Alucard
+1301    Ed
+
+-------------------------------
+       Disk Page [35]   
+-------------------------------
+1951    Spike
+1603    Deedlit
+822    Hellsing
+115    Seras
+1219    Parn
+1572    Hellsing
+1855    Faye
+1257    Spike
+11    Bebop
+967    Parn
+365    Spike
+515    Spike
+709    Alucard
+140    Lodoss
+1698    Lodoss
+392    Faye
+955    Spike
+333    Faye
+927    Bebop
+1834    Hellsing
+45    Jet
+142    Deedlit
+518    Deedlit
+
+-------------------------------
+       Disk Page [36]   
+-------------------------------
+1883    Alucard
+1642    Parn
+21    Lodoss
+1775    Seras
+944    Spike
+1628    Seras
+726    Bebop
+1658    Ed
+1699    Seras
+1763    Jet
+1865    Hellsing
+308    Alucard
+1870    Bebop
+1980    Parn
+1971    Deedlit
+12    Bebop
+578    Deedlit
+1016    Spike
+1589    Deedlit
+1981    Parn
+1632    Bebop
+1434    Parn
+892    Deedlit
+
+-------------------------------
+       Disk Page [37]   
+-------------------------------
+757    Bebop
+543    Alucard
+360    Bebop
+1192    Alucard
+1876    Jet
+98    Deedlit
+1742    Spike
+1631    Seras
+273    Alucard
+465    Deedlit
+250    Parn
+345    Deedlit
+1073    Deedlit
+750    Faye
+506    Lodoss
+1866    Parn
+1872    Ed
+519    Lodoss
+200    Jet
+1479    Spike
+6    Hellsing
+1860    Deedlit
+85    Lodoss
+
+-------------------------------
+       Disk Page [38]   
+-------------------------------
+790    Alucard
+282    Parn
+68    Faye
+1773    Parn
+1278    Ed
+225    Faye
+1723    Faye
+1822    Faye
+628    Deedlit
+1920    Ed
+1137    Faye
+1685    Hellsing
+793    Ed
+1843    Faye
+786    Spike
+51    Parn
+298    Jet
+349    Ed
+1869    Parn
+1921    Deedlit
+1989    Parn
+403    Alucard
+197    Seras
+
+-------------------------------
+       Disk Page [39]   
+-------------------------------
+1258    Spike
+1910    Faye
+535    Hellsing
+1615    Parn
+782    Parn
+1245    Alucard
+1112    Seras
+47    Deedlit
+611    Hellsing
+4    Ed
+1475    Seras
+109    Seras
+1719    Faye
+238    Seras
+1104    Bebop
+173    Hellsing
+1492    Deedlit
+1139    Bebop
+652    Parn
+134    Alucard
+676    Lodoss
+1894    Spike
+54    Faye
+
+-------------------------------
+       Disk Page [40]   
+-------------------------------
+523    Parn
+1700    Seras
+1162    Alucard
+1097    Hellsing
+1619    Jet
+1922    Spike
+300    Parn
+885    Lodoss
+1268    Ed
+1701    Seras
+265    Faye
+311    Faye
+356    Jet
+1508    Faye
+1357    Alucard
+270    Seras
+469    Hellsing
+1098    Jet
+762    Parn
+961    Seras
+1706    Parn
+1670    Seras
+88    Bebop
+
+-------------------------------
+       Disk Page [41]   
+-------------------------------
+1907    Parn
+1962    Deedlit
+330    Bebop
+1467    Lodoss
+1009    Parn
+1574    Faye
+1620    Alucard
+663    Spike
+1161    Alucard
+1740    Spike
+1271    Deedlit
+1640    Lodoss
+710    Bebop
+1811    Lodoss
+1347    Jet
+55    Deedlit
+1260    Seras
+1036    Ed
+948    Jet
+214    Hellsing
+1724    Jet
+1075    Hellsing
+747    Parn
+
+-------------------------------
+       Disk Page [42]   
+-------------------------------
+868    Spike
+1438    Jet
+1170    Deedlit
+1124    Faye
+1689    Jet
+1582    Hellsing
+954    Jet
+413    Parn
+1674    Deedlit
+712    Jet
+60    Hellsing
+1923    Faye
+1852    Jet
+1448    Hellsing
+1727    Faye
+402    Jet
+1827    Ed
+1500    Jet
+1911    Bebop
+936    Spike
+872    Jet
+522    Bebop
+828    Lodoss
+
+-------------------------------
+       Disk Page [43]   
+-------------------------------
+741    Alucard
+958    Spike
+1644    Parn
+189    Seras
+1380    Bebop
+1675    Faye
+1362    Ed
+548    Alucard
+1234    Deedlit
+713    Jet
+1924    Hellsing
+394    Seras
+975    Ed
+1184    Spike
+620    Seras
+1812    Hellsing
+283    Ed
+84    Parn
+1451    Parn
+569    Bebop
+1305    Faye
+853    Jet
+528    Bebop
+
+-------------------------------
+       Disk Page [44]   
+-------------------------------
+816    Deedlit
+640    Bebop
+122    Ed
+976    Jet
+1498    Parn
+957    Ed
+539    Deedlit
+529    Bebop
+808    Faye
+1288    Alucard
+28    Alucard
+1680    Bebop
+1332    Jet
+195    Lodoss
+920    Deedlit
+1193    Seras
+1730    Parn
+1261    Hellsing
+557    Alucard
+1879    Alucard
+983    Lodoss
+1787    Spike
+545    Hellsing
+
+-------------------------------
+       Disk Page [45]   
+-------------------------------
+1321    Hellsing
+491    Jet
+1108    Parn
+1772    Jet
+1344    Faye
+1473    Seras
+1814    Jet
+823    Parn
+1059    Faye
+1087    Alucard
+387    Lodoss
+1302    Jet
+1303    Faye
+487    Seras
+257    Ed
+271    Jet
+1377    Parn
+674    Spike
+1518    Seras
+389    Seras
+1573    Jet
+581    Faye
+1412    Bebop
+
+-------------------------------
+       Disk Page [46]   
+-------------------------------
+1694    Deedlit
+97    Spike
+1436    Faye
+658    Spike
+798    Hellsing
+1983    Jet
+466    Parn
+1896    Deedlit
+1437    Parn
+201    Spike
+1277    Seras
+1440    Spike
+706    Parn
+301    Parn
+347    Seras
+1993    Deedlit
+1972    Ed
+170    Seras
+252    Deedlit
+945    Seras
+1990    Ed
+1055    Hellsing
+1385    Lodoss
+
+-------------------------------
+       Disk Page [47]   
+-------------------------------
+1141    Jet
+1060    Bebop
+1635    Parn
+977    Bebop
+1776    Faye
+1672    Ed
+1163    Ed
+799    Seras
+692    Deedlit
+338    Alucard
+1862    Spike
+1927    Faye
+1660    Bebop
+1752    Faye
+593    Bebop
+145    Bebop
+724    Ed
+889    Seras
+1625    Parn
+1243    Spike
+877    Spike
+728    Spike
+1721    Hellsing
+
+-------------------------------
+       Disk Page [48]   
+-------------------------------
+564    Seras
+242    Faye
+419    Faye
+1123    Lodoss
+1018    Alucard
+1604    Lodoss
+1320    Spike
+1088    Hellsing
+1764    Bebop
+1066    Bebop
+1441    Hellsing
+1312    Spike
+234    Faye
+598    Jet
+779    Alucard
+1456    Deedlit
+1890    Spike
+409    Deedlit
+183    Deedlit
+382    Deedlit
+191    Bebop
+1223    Faye
+1034    Ed
+
+-------------------------------
+       Disk Page [49]   
+-------------------------------
+1443    Alucard
+246    Parn
+83    Parn
+211    Seras
+1113    Faye
+671    Faye
+1262    Bebop
+23    Deedlit
+227    Alucard
+1551    Spike
+1708    Hellsing
+400    Alucard
+939    Deedlit
+971    Lodoss
+1733    Alucard
+878    Spike
+1272    Parn
+551    Parn
+52    Bebop
+70    Bebop
+1840    Jet
+1789    Spike
+1867    Seras
+
+-------------------------------
+       Disk Page [50]   
+-------------------------------
+339    Deedlit
+284    Faye
+43    Lodoss
+1047    Alucard
+1652    Faye
+1286    Deedlit
+781    Hellsing
+1630    Hellsing
+1273    Seras
+493    Alucard
+919    Jet
+1707    Bebop
+901    Faye
+547    Alucard
+1485    Spike
+1608    Seras
+1799    Seras
+1093    Lodoss
+422    Seras
+550    Alucard
+1236    Bebop
+1682    Deedlit
+1863    Seras
+
+-------------------------------
+       Disk Page [51]   
+-------------------------------
+1510    Deedlit
+1949    Parn
+1037    Jet
+1274    Parn
+1494    Deedlit
+716    Faye
+1328    Spike
+117    Seras
+833    Deedlit
+100    Spike
+1453    Seras
+274    Deedlit
+1002    Seras
+1004    Seras
+549    Alucard
+1558    Seras
+1688    Faye
+968    Parn
+1251    Seras
+752    Jet
+863    Alucard
+1902    Bebop
+985    Seras
+
+-------------------------------
+       Disk Page [52]   
+-------------------------------
+1413    Seras
+1080    Spike
+1190    Parn
+686    Deedlit
+245    Deedlit
+880    Alucard
+480    Bebop
+1995    Parn
+1292    Jet
+1803    Lodoss
+1397    Spike
+595    Faye
+1991    Ed
+444    Spike
+830    Spike
+817    Spike
+1720    Seras
+1293    Alucard
+1686    Alucard
+101    Hellsing
+810    Alucard
+1019    Seras
+1804    Faye
+
+-------------------------------
+       Disk Page [53]   
+-------------------------------
+346    Spike
+439    Alucard
+357    Bebop
+1194    Hellsing
+1355    Bebop
+1444    Faye
+687    Faye
+258    Lodoss
+1275    Parn
+1586    Ed
+247    Hellsing
+570    Alucard
+1590    Ed
+831    Bebop
+1709    Bebop
+1031    Alucard
+1449    Deedlit
+776    Spike
+398    Seras
+1021    Bebop
+923    Parn
+552    Alucard
+1925    Deedlit
+
+-------------------------------
+       Disk Page [90]   
+-------------------------------
+1746    Alucard
+1224    Bebop
+1766    Alucard
+1931    Alucard
+1744    Deedlit
+1584    Faye
+1903    Hellsing
+228    Seras
+305    Alucard
+56    Ed
+176    Alucard
+639    Jet
+648    Hellsing
+754    Parn
+1022    Lodoss
+1964    Ed
+572    Lodoss
+275    Lodoss
+1195    Ed
+1237    Deedlit
+8    Lodoss
+876    Spike
+554    Spike
+
+-------------------------------
+       Disk Page [91]   
+-------------------------------
+470    Deedlit
+1185    Ed
+1711    Lodoss
+1229    Alucard
+959    Deedlit
+1342    Deedlit
+3    Ed
+467    Lodoss
+1178    Jet
+1361    Parn
+1205    Spike
+276    Hellsing
+1495    Seras
+642    Hellsing
+1735    Hellsing
+795    Spike
+1643    Deedlit
+856    Hellsing
+1836    Spike
+769    Parn
+306    Jet
+1933    Bebop
+411    Alucard
+
+-------------------------------
+       Disk Page [92]   
+-------------------------------
+1455    Jet
+1900    Hellsing
+1794    Deedlit
+254    Faye
+10    Alucard
+1846    Bebop
+15    Hellsing
+1164    Faye
+1078    Parn
+340    Parn
+135    Parn
+1881    Alucard
+1023    Hellsing
+322    Spike
+1390    Jet
+1420    Faye
+341    Spike
+163    Bebop
+1690    Seras
+857    Jet
+1795    Alucard
+1461    Ed
+1585    Spike
+
+-------------------------------
+       Disk Page [93]   
+-------------------------------
+172    Deedlit
+1329    Spike
+1127    Lodoss
+787    Parn
+1527    Faye
+235    Lodoss
+1276    Spike
+972    Jet
+555    Bebop
+1530    Ed
+220    Faye
+1617    Ed
+229    Jet
+348    Parn
+1304    Spike
+670    Parn
+353    Hellsing
+1774    Hellsing
+1152    Jet
+599    Parn
+695    Deedlit
+1089    Hellsing
+1676    Spike
+
+-------------------------------
+       Disk Page [94]   
+-------------------------------
+1751    Faye
+949    Alucard
+633    Faye
+1645    Jet
+123    Faye
+1899    Alucard
+621    Faye
+1561    Parn
+1714    Seras
+1477    Spike
+1182    Jet
+1067    Ed
+358    Hellsing
+594    Deedlit
+1374    Lodoss
+725    Spike
+503    Seras
+1757    Jet
+912    Alucard
+1199    Jet
+193    Deedlit
+1779    Seras
+1677    Seras
+
+-------------------------------
+       Disk Page [95]   
+-------------------------------
+285    Faye
+742    Lodoss
+1334    Alucard
+801    Bebop
+1308    Hellsing
+414    Alucard
+177    Jet
+677    Faye
+192    Ed
+1024    Alucard
+447    Alucard
+582    Alucard
+635    Faye
+660    Deedlit
+1246    Spike
+372    Jet
+481    Lodoss
+559    Lodoss
+1200    Faye
+1463    Spike
+1154    Parn
+1591    Jet
+46    Jet
+
+-------------------------------
+       Disk Page [96]   
+-------------------------------
+1833    Lodoss
+947    Jet
+1934    Hellsing
+1864    Seras
+1850    Spike
+158    Alucard
+1391    Deedlit
+354    Deedlit
+1452    Bebop
+1129    Hellsing
+359    Faye
+309    Lodoss
+950    Hellsing
+1417    Lodoss
+492    Hellsing
+1790    Parn
+1464    Spike
+5    Hellsing
+556    Hellsing
+560    Ed
+1279    Parn
+1421    Bebop
+1283    Spike
+
+-------------------------------
+       Disk Page [97]   
+-------------------------------
+1710    Hellsing
+1935    Alucard
+987    Bebop
+1715    Hellsing
+26    Lodoss
+1712    Faye
+410    Seras
+643    Jet
+1375    Faye
+1592    Seras
+1936    Ed
+367    Faye
+951    Jet
+1025    Parn
+240    Faye
+1656    Ed
+566    Faye
+861    Alucard
+125    Alucard
+1815    Faye
+1837    Lodoss
+1621    Hellsing
+1482    Deedlit
+
+-------------------------------
+       Disk Page [98]   
+-------------------------------
+644    Lodoss
+873    Seras
+286    Faye
+1722    Faye
+1240    Jet
+818    Faye
+1726    Lodoss
+1758    Alucard
+1358    Seras
+423    Jet
+1798    Parn
+1944    Deedlit
+1392    Bebop
+184    Hellsing
+287    Bebop
+1780    Spike
+1348    Spike
+1126    Seras
+288    Lodoss
+1646    Lodoss
+323    Hellsing
+368    Faye
+1593    Parn
+
+-------------------------------
+       Disk Page [99]   
+-------------------------------
+474    Seras
+310    Seras
+932    Faye
+312    Jet
+1816    Hellsing
+7    Ed
+1351    Parn
+1622    Seras
+886    Parn
+1992    Spike
+1032    Alucard
+1939    Deedlit
+1376    Lodoss
+1597    Faye
+61    Alucard
+680    Ed
+567    Ed
+784    Spike
+13    Alucard
+1817    Deedlit
+897    Hellsing
+1061    Seras
+208    Spike
+
+-------------------------------
+       Disk Page [100]   
+-------------------------------
+289    Ed
+953    Jet
+835    Seras
+1895    Deedlit
+1741    Seras
+1284    Parn
+864    Seras
+1687    Jet
+1571    Alucard
+421    Hellsing
+1868    Bebop
+185    Jet
+369    Jet
+767    Seras
+1201    Deedlit
+568    Hellsing
+1035    Ed
+661    Ed
+430    Ed
+579    Parn
+1204    Spike
+69    Ed
+454    Jet
+
+-------------------------------
+       Disk Page [101]   
+-------------------------------
+601    Alucard
+937    Alucard
+1287    Seras
+731    Alucard
+1945    Parn
+571    Spike
+1994    Lodoss
+934    Alucard
+1647    Deedlit
+738    Bebop
+138    Faye
+736    Jet
+1818    Lodoss
+730    Jet
+219    Deedlit
+1165    Parn
+935    Ed
+1760    Deedlit
+1206    Deedlit
+796    Alucard
+1465    Seras
+1352    Spike
+1058    Deedlit
+
+-------------------------------
+       Disk Page [102]   
+-------------------------------
+428    Seras
+449    Hellsing
+66    Faye
+645    Jet
+1310    Jet
+370    Faye
+378    Seras
+812    Lodoss
+899    Faye
+1468    Bebop
+940    Parn
+1529    Deedlit
+373    Faye
+507    Alucard
+24    Bebop
+496    Bebop
+1068    Alucard
+1946    Seras
+1353    Faye
+1842    Lodoss
+1542    Bebop
+574    Alucard
+646    Spike
+
+-------------------------------
+       Disk Page [103]   
+-------------------------------
+575    Lodoss
+1294    Jet
+1503    Alucard
+313    Bebop
+237    Hellsing
+1327    Deedlit
+771    Alucard
+1678    Ed
+1038    Faye
+984    Lodoss
+233    Hellsing
+1166    Bebop
+1252    Alucard
+315    Jet
+1626    Seras
+1627    Deedlit
+1575    Alucard
+824    Alucard
+57    Lodoss
+681    Seras
+1317    Bebop
+667    Lodoss
+602    Seras
+
+-------------------------------
+       Disk Page [104]   
+-------------------------------
+1716    Jet
+576    Jet
+1469    Lodoss
+374    Alucard
+1901    Deedlit
+497    Seras
+1044    Parn
+1169    Seras
+1648    Faye
+733    Parn
+1559    Faye
+797    Hellsing
+577    Lodoss
+1425    Jet
+1207    Lodoss
+1263    Bebop
+1306    Lodoss
+580    Faye
+1039    Hellsing
+902    Seras
+390    Spike
+583    Spike
+27    Spike
+
+-------------------------------
+       Disk Page [105]   
+-------------------------------
+1171    Alucard
+16    Hellsing
+701    Spike
+1173    Alucard
+1748    Deedlit
+317    Spike
+475    Faye
+127    Ed
+1094    Hellsing
+1550    Faye
+928    Bebop
+424    Seras
+1298    Faye
+1600    Spike
+102    Faye
+1819    Hellsing
+913    Alucard
+86    Alucard
+209    Spike
+1691    Deedlit
+425    Hellsing
+103    Hellsing
+585    Lodoss
+
+-------------------------------
+       Disk Page [106]   
+-------------------------------
+1096    Lodoss
+1363    Lodoss
+1820    Jet
+1823    Deedlit
+1244    Faye
+196    Deedlit
+802    Faye
+1661    Deedlit
+1947    Parn
+717    Alucard
+1474    Seras
+696    Hellsing
+1562    Alucard
+78    Jet
+1824    Seras
+603    Parn
+941    Seras
+586    Spike
+1062    Lodoss
+1476    Parn
+1354    Spike
+79    Seras
+1478    Ed
+
+-------------------------------
+       Disk Page [107]   
+-------------------------------
+748    Hellsing
+508    Bebop
+1877    Spike
+1629    Jet
+1519    Bebop
+1483    Jet
+1528    Alucard
+375    Jet
+1825    Ed
+1323    Lodoss
+589    Deedlit
+788    Hellsing
+1541    Hellsing
+377    Spike
+1484    Ed
+1486    Hellsing
+1948    Faye
+1416    Alucard
+1952    Bebop
+1973    Jet
+678    Deedlit
+1210    Alucard
+714    Hellsing
+
+-------------------------------
+       Disk Page [108]   
+-------------------------------
+1253    Ed
+1601    Parn
+962    Ed
+1957    Hellsing
+1307    Ed
+426    Parn
+1953    Parn
+1069    Spike
+605    Deedlit
+1649    Spike
+1828    Bebop
+1393    Jet
+1611    Alucard
+1829    Deedlit
+29    Deedlit
+647    Lodoss
+187    Seras
+1330    Faye
+1040    Spike
+979    Jet
+1725    Alucard
+80    Faye
+1063    Seras
+
+-------------------------------
+       Disk Page [134]   
+-------------------------------
+1904    Parn
+698    Hellsing
+1211    Alucard
+1996    Jet
+1651    Jet
+613    Parn
+734    Hellsing
+243    Faye
+1090    Parn
+664    Faye
+893    Seras
+1954    Lodoss
+1076    Ed
+699    Bebop
+1042    Jet
+92    Deedlit
+800    Bebop
+498    Deedlit
+1216    Bebop
+1974    Jet
+974    Lodoss
+212    Faye
+1830    Alucard
+
+-------------------------------
+       Disk Page [135]   
+-------------------------------
+682    Lodoss
+1043    Bebop
+1266    Hellsing
+248    Deedlit
+870    Ed
+879    Bebop
+668    Faye
+1553    Ed
+755    Seras
+1728    Ed
+215    Jet
+614    Lodoss
+1487    Faye
+1496    Spike
+72    Bebop
+73    Spike
+1504    Ed
+1546    Hellsing
+1333    Parn
+1547    Lodoss
+476    Deedlit
+1880    Faye
+194    Spike
+
+-------------------------------
+       Disk Page [136]   
+-------------------------------
+1212    Deedlit
+832    Jet
+907    Deedlit
+30    Faye
+236    Seras
+836    Hellsing
+881    Seras
+499    Faye
+917    Seras
+1248    Seras
+166    Faye
+1663    Lodoss
+980    Ed
+482    Jet
+379    Hellsing
+982    Bebop
+702    Parn
+251    Seras
+427    Faye
+501    Hellsing
+218    Spike
+622    Deedlit
+1831    Jet
+
+-------------------------------
+       Disk Page [137]   
+-------------------------------
+431    Deedlit
+758    Parn
+1267    Ed
+1077    Bebop
+1841    Seras
+623    Lodoss
+918    Spike
+839    Parn
+840    Lodoss
+1213    Ed
+1295    Deedlit
+1506    Bebop
+483    Seras
+230    Ed
+318    Spike
+381    Spike
+1507    Ed
+1576    Faye
+432    Faye
+131    Faye
+1174    Deedlit
+625    Faye
+1605    Lodoss
+
+-------------------------------
+       Disk Page [138]   
+-------------------------------
+1214    Hellsing
+146    Hellsing
+1359    Spike
+882    Bebop
+1538    Spike
+118    Ed
+636    Hellsing
+1533    Lodoss
+1299    Seras
+1511    Spike
+1844    Parn
+31    Jet
+136    Deedlit
+657    Deedlit
+1577    Bebop
+1717    Lodoss
+1905    Lodoss
+1142    Faye
+1215    Lodoss
+638    Faye
+843    Seras
+1144    Jet
+1885    Spike
+
+-------------------------------
+       Disk Page [139]   
+-------------------------------
+1356    Hellsing
+942    Ed
+58    Hellsing
+943    Deedlit
+1300    Jet
+436    Hellsing
+1512    Deedlit
+989    Parn
+1045    Bebop
+1886    Ed
+1132    Faye
+198    Jet
+1664    Deedlit
+662    Alucard
+791    Bebop
+665    Lodoss
+1738    Parn
+1513    Faye
+1101    Alucard
+1048    Bebop
+963    Lodoss
+1976    Jet
+1049    Lodoss
+
+-------------------------------
+       Disk Page [140]   
+-------------------------------
+199    Hellsing
+1514    Faye
+32    Bebop
+1225    Parn
+1679    Alucard
+1091    Deedlit
+666    Hellsing
+964    Seras
+160    Alucard
+669    Hellsing
+689    Faye
+450    Seras
+1955    Parn
+1681    Spike
+720    Parn
+1540    Faye
+434    Lodoss
+1309    Hellsing
+1891    Faye
+1606    Seras
+721    Parn
+1832    Seras
+690    Ed
+
+-------------------------------
+       Disk Page [141]   
+-------------------------------
+1095    Deedlit
+705    Seras
+1422    Faye
+435    Deedlit
+440    Bebop
+1228    Seras
+1316    Faye
+169    Hellsing
+442    Faye
+729    Alucard
+1847    Lodoss
+739    Hellsing
+1848    Seras
+1684    Seras
+1849    Lodoss
+1099    Parn
+811    Deedlit
+451    Ed
+744    Bebop
+789    Hellsing
+320    Jet
+1956    Ed
+1515    Hellsing
+
+-------------------------------
+       Disk Page [142]   
+-------------------------------
+137    Jet
+290    Faye
+745    Jet
+1102    Jet
+746    Faye
+1861    Spike
+1217    Ed
+33    Spike
+1548    Ed
+869    Seras
+871    Alucard
+1360    Alucard
+1958    Faye
+231    Jet
+1552    Ed
+1520    Spike
+1692    Deedlit
+1103    Faye
+34    Spike
+1853    Faye
+106    Ed
+452    Hellsing
+1963    Hellsing
+
+-------------------------------
+       Disk Page [143]   
+-------------------------------
+1364    Bebop
+1230    Alucard
+1693    Deedlit
+1761    Alucard
+998    Ed
+1854    Hellsing
+1607    Ed
+1423    Spike
+759    Lodoss
+321    Bebop
+760    Lodoss
+761    Lodoss
+1965    Hellsing
+107    Parn
+763    Faye
+768    Jet
+324    Bebop
+1175    Bebop
+1521    Bebop
+74    Seras
+887    Hellsing
+1718    Seras
+1522    Spike
+
+-------------------------------
+       Disk Page [144]   
+-------------------------------
+841    Lodoss
+1554    Faye
+59    Jet
+453    Hellsing
+1555    Alucard
+1107    Hellsing
+1966    Parn
+773    Seras
+903    Parn
+774    Parn
+456    Lodoss
+1729    Ed
+804    Ed
+807    Seras
+1218    Lodoss
+1387    Jet
+1311    Faye
+809    Faye
+1388    Seras
+813    Seras
+973    Ed
+459    Lodoss
+1749    Spike
+
+-------------------------------
+       Disk Page [145]   
+-------------------------------
+239    Deedlit
+814    Faye
+36    Bebop
+1523    Ed
+849    Ed
+1233    Hellsing
+1524    Alucard
+326    Parn
+988    Parn
+1313    Alucard
+108    Alucard
+1109    Spike
+1426    Parn
+1556    Seras
+147    Lodoss
+1564    Seras
+850    Ed
+111    Jet
+1975    Parn
+460    Spike
+1326    Hellsing
+149    Faye
+874    Deedlit
+
+-------------------------------
+       Disk Page [146]   
+-------------------------------
+1566    Bebop
+1750    Lodoss
+1762    Ed
+171    Spike
+888    Jet
+1366    Deedlit
+905    Spike
+906    Deedlit
+1319    Seras
+477    Deedlit
+1967    Parn
+908    Alucard
+1968    Alucard
+1977    Seras
+914    Bebop
+1578    Seras
+1609    Ed
+922    Bebop
+915    Parn
+461    Hellsing
+178    Spike
+112    Deedlit
+64    Lodoss
+
+-------------------------------
+       Disk Page [147]   
+-------------------------------
+1110    Alucard
+37    Hellsing
+65    Bebop
+174    Jet
+38    Jet
+1143    Parn
+921    Ed
+991    Lodoss
+924    Spike
+926    Parn
+1115    Hellsing
+929    Faye
+478    Bebop
+128    Jet
+992    Faye
+993    Parn
+994    Seras
+999    Hellsing
+1116    Alucard
+260    Parn
+81    Parn
+1117    Lodoss
+1118    Bebop
+
+-------------------------------
+       Disk Page [148]   
+-------------------------------
+1119    Faye
+1120    Faye
+40    Spike
+41    Hellsing
+1125    Parn
+1368    Lodoss
+1176    Hellsing
+42    Ed
+1133    Hellsing
+44    Alucard
+87    Alucard
+232    Bebop
+113    Hellsing
+1325    Deedlit
+114    Bebop
+1146    Jet
+1147    Ed
+1148    Spike
+1331    Lodoss
+1335    Lodoss
+1336    Deedlit
+1338    Lodoss
+1339    Hellsing
+
+-------------------------------
+       Disk Page [149]   
+-------------------------------
+116    Alucard
+152    Hellsing
+1340    Lodoss
+1367    Parn
+1369    Alucard
+1381    Seras
+1396    Jet
+1398    Seras
+1427    Hellsing
+119    Faye
+126    Deedlit
+129    Deedlit
+130    Parn
+132    Jet
+139    Ed
+141    Faye
+157    Bebop
+161    Alucard
+167    Spike
+249    Jet
+253    Ed
+261    Jet

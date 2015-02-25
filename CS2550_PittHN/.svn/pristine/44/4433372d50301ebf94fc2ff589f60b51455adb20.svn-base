@@ -1,0 +1,14 @@
+package DataManager;
+
+public class TupleImage {
+
+	int ID;
+	String ClientName;
+	String Phone;
+	
+	TupleImage(int id, String cn, String p){
+		this.ID = id;
+		this.ClientName = cn;
+		this.Phone = p;
+	}
+}

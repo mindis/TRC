@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static ArrayList<ScriptFile> fileList = new ArrayList(0);
+	
+	public static StringBuffer TMLogger = new StringBuffer();
+	public static StringBuffer SchedulerLogger = new StringBuffer();
+	public static StringBuffer DMLogger = new StringBuffer();
+	
+	public static void main(String[] args) {
+		System.out.println("*** PittHN starts executing ***");
+		
+		int len = args.length;
+		if(len<1){
+			System.out.println("No script files. System quit.");
+			System.exit(0);
+		}
+
+		for(int i=0;i<len;i++){
+			TMLogger.append("Reading script files.\n");
+			ScriptFile sf = new ScriptFile(i,args[i].trim());
+			if(sf.getInstructions()){
+				fileList.add(sf);
+			}else{
+				System.out.println("Warning: invalid script format of the file "+i+". This file will be ignored");
+				TMLogger.append("Warning: invalid script format of the file "+i+". This file will be ignored. \n");
+			}
+		}
+		
+		
+		System.out.println("*** PittHN finishes executing ***");
+
+	}
+
+}
