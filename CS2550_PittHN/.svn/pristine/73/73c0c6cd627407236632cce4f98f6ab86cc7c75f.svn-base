@@ -1,6 +1,0 @@
-package Scheduler;
-
-public class Scheduler {
-	public static StringBuffer SchedulerLogger = new StringBuffer();
-
-}
