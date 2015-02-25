@@ -9,7 +9,9 @@ public class Driver {
 	public Driver(int nrPages, String[] tableArray) {
 		initPages(nrPages);
 		readTables(tableArray);
-		processOneScript();
+		
+
+		();
 	}
 	private void readTables(String[] tableArray) {
 		// index starts from 1
