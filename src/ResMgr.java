@@ -38,4 +38,39 @@ public class ResMgr {
 		pageTable = new PageTable(nrPages);
 	}
 
+	public static byte[] findTupleInRowBuffer(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static void movePagesFromFileToRowBuffer(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static boolean containsTable(String tableName) {
+		// TODO Auto-generated method stub
+		return table_file_map.containsKey(tableName);
+	}
+
+	public static void createFilesForTable(String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void insertTupleToFiles(String tableName, String tupleStr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static int getIdFromTupleStr(String tupleStr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static void insertTupleIntoRowBuffer(String tupleStr) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
