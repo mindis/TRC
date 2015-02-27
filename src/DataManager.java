@@ -35,17 +35,18 @@ public class DataManager {
 	}
 
 	private static void insert(String tableName, String tupleStr) {
+		Tuple tuple = new Tuple(tupleStr);
 		// check if table exist or not
 		if (!ResMgr.containsTable(tableName)) {
 			ResMgr.createFilesForTable(tableName);
-			ResMgr.insertTupleToFiles(tableName, tupleStr);
+			ResMgr.insertTupleToFiles(tableName, tuple);
 			return;
 		}
 		// if the table exists, check if mem_page contains the tuple to be
 		// inserted
-		int id = ResMgr.getIdFromTupleStr(tupleStr);
-		byte[] tuple = retrieve(tableName, id);
-		if (tuple != null) {
+		int id = tuple.getId();
+		byte[] tupleArr = retrieve(tableName, id);
+		if (tupleArr != null) {
 			System.out.println("illegal insertion: tuple already exists!");
 			return;
 		}
