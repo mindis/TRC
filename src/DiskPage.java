@@ -4,13 +4,20 @@ import java.util.Arrays;
 public class DiskPage {
 	private static int PAGE_SIZE = 512; // 512B
 	private byte[] pages;
-
 	// the last int is a pointer to next page, initialized to be -1
 	// the second last int is a pointer to next available slot.
 	public DiskPage() {
 		pages = new byte[PAGE_SIZE];
 		setNextPagePointer(-1);//no next pages initially
 		setCursorPointer(0);//no element in the current page 
+	}
+	
+	public DiskPage(byte[] pages){
+		this.pages = pages;
+	}
+	
+	public boolean isFull(){
+		return getCursorPointer() >= PAGE_SIZE - 8;
 	}
 	
 	private void setCursorPointer(int value) {

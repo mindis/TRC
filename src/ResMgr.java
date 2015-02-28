@@ -29,7 +29,7 @@ public class ResMgr {
 					.println("<#pages> should be an integer of 16k, k = 1, 2, 3...");
 			System.exit(-1);
 		}
-		rowBuffer = new RowBuffer(nrPages, table_mm_row_map, pageTable);
+		rowBuffer = new RowBuffer(nrPages, pageTable);
 		colBuffer = new byte[nrPages * PAGE_SIZE];
 	}
 
@@ -38,7 +38,7 @@ public class ResMgr {
 	 * disk file
 	 */
 	public static void initHashTable() {
-		table_mm_row_map = new HashMap<String, List<Integer>>();
+
 		table_mm_col_map = new HashMap<String, List<Integer>>();
 		table_file_map = new HashMap<String, DiskFile[]>();
 	}
@@ -48,19 +48,38 @@ public class ResMgr {
 	}
 
 	/**
-	 * Search the row buffer to find the tuple with the corresponding id
+	 * steps: 1) for 3 disk files associated with the table, bring one element
+	 * at a time and construct a tuple from those elements 2) insert the tuple
+	 * into the rowBuffer 3) update the page table
 	 * 
+	 * @param tableName
 	 * @param id
-	 * @return
 	 */
-	public static byte[] findTupleInRowBuffer(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public static void movePageFromFileToRowBuffer(String tableName, int id) {
+		DiskFile[] diskFiles = table_file_map.get(tableName);
+		DiskFile idFile = diskFiles[0], nameFile = diskFiles[1], phoneFile = diskFiles[2];
+		List<Integer> idElements = idFile.getIdElementsWithId(id);
+		List<String> nameElements = nameFile.getNameElementsWithId(id);
+		List<String> phoneElements = phoneFile.getPhoneElementsWithId(id);
+		int idPageNum = idFile.getIdPageNum(id), namePageNum = nameFile
+				.getNamePageNum(id), phonePageNum = phoneFile
+				.getPhonePageNum(id);
 
-	public static void movePageFromFileToRowBuffer(int id) {
-		// TODO Auto-generated method stub
+		if (idElements.size() != nameElements.size()
+				|| idElements.size() != phoneElements.size()) {
+			System.err
+					.println("the number of the elements in each file should be the same");
+			System.exit(-1);
+		}
 
+		for (int i = 0; i < idElements.size(); i++) {
+			Tuple tuple = new Tuple(idElements.get(i), nameElements.get(i),
+					phoneElements.get(i));
+			insertTupleIntoRowBuffer(tableName, tuple);
+		}
+		//swap out 
+		
+		//swap in
 	}
 
 	public static boolean containsTable(String tableName) {
@@ -94,14 +113,15 @@ public class ResMgr {
 	}
 
 	/**
-	 * Under this two situation this function gets called:
-	 * 1) when no file exist for the table
-	 * 2) when the tuple to be inserted cannot fit into memory page, we should create new disk
-	 * page in order to hold the element of the new tuple
+	 * Under this two situation this function gets called: 1) when no file exist
+	 * for the table 2) when the tuple to be inserted cannot fit into memory
+	 * page, we should create new disk page in order to hold the element of the
+	 * new tuple
 	 * 
-	 * there's nothing to do with the page table, page table is updated only when retrieve happened.
-	 * When insertion stop at the memory level, just set the dirty bit of the page table so that
-	 * when swapped out, the content will be write back to the memory.
+	 * there's nothing to do with the page table, page table is updated only
+	 * when retrieve happened. When insertion stop at the memory level, just set
+	 * the dirty bit of the page table so that when swapped out, the content
+	 * will be write back to the memory.
 	 * 
 	 * @param tableName
 	 * @param tuple
@@ -115,14 +135,26 @@ public class ResMgr {
 		phoneFile.createNewPageToHoldTuplePhone(tuple);
 	}
 
-	public static void insertTupleIntoRowBuffer(Tuple tuple) {
-		// TODO Auto-generated method stub
-
+	/**
+	 * 2 steps: 1) see if we can find the rowBuffer page with space to insert 2)
+	 * if no room left, insert the tuple to the disk file
+	 * 
+	 * @param tableName
+	 * @param tuple
+	 */
+	public static void insertTupleIntoRowBuffer(String tableName, Tuple tuple) {
+		if (!rowBuffer.insertTuple(tableName, tuple))
+			insertTupleToNewFilePage(tableName, tuple);
 	}
 
 	public static boolean hasTupleInRowBuffer(String tableName, int id) {
 		// TODO Auto-generated method stub
-		return rowBuffer.hasTuple(tableName, id);
+		return rowBuffer.getTuple(tableName, id) != null;
+	}
+
+	public static Tuple getTuple(String tableName, int id) {
+		// TODO Auto-generated method stub
+		return rowBuffer.getTuple(tableName, id);
 	}
 
 }

@@ -11,7 +11,6 @@ public class PageTable {
 	class PTE {
 		boolean isValid, isDirty;
 		int memPageNum;
-		int bucketNum;
 		int idPageNum, namePageNum, phonePageNum;
 
 		public PTE() {
@@ -23,7 +22,6 @@ public class PageTable {
 			this.isValid = isValid;
 			this.isDirty = isDirty;
 			this.memPageNum = memPageNum;
-			this.bucketNum = bucketNum;
 			this.idPageNum = idPageNum;
 			this.namePageNum = namePageNum;
 			this.phonePageNum = phonePageNum;

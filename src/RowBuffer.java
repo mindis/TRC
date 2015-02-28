@@ -7,33 +7,65 @@ public class RowBuffer {
 	PageTable pageTable;
 
 	public RowBuffer(int nrPages,
-			HashMap<String, List<Integer>> table_mm_row_map, PageTable pageTable) {
+			 PageTable pageTable) {
 		pageList = new RowPage[nrPages];
-		this.table_mm_row_map = table_mm_row_map;
+		this.table_mm_row_map = new HashMap<String, List<Integer>>();
 		this.pageTable = pageTable;
+	}
+	
+	public List<Integer> getPageList(String tableName){
+		if(!table_mm_row_map.containsKey(tableName)) return null;
+		return table_mm_row_map.get(tableName);
 	}
 
 	class RowPage {
 		Tuple[] tuples = null;
+		int tupleNum = 0;//the actual tuple number stored so far
 		private static final int TUPLE_NUM_PER_PAGE = 512 / 32;
 
 		public RowPage() {
 			tuples = new Tuple[TUPLE_NUM_PER_PAGE];
 		}
 
-		public boolean hasTuple(int id) {
+		public Tuple getTuple(int id) {
 			for (Tuple tuple : tuples)
 				if (tuple.containsId(id))
-					return true;
-			return false;
+					return tuple;
+			return null;
 		}
+
+		public boolean isFull() {
+			return tupleNum >= TUPLE_NUM_PER_PAGE;
+		}
+
+		public void insertTuple(Tuple tuple) {
+			if(!isFull())
+				tuples[tupleNum++] = tuple;
+		}
+
 	}
 
-	public boolean hasTuple(String tableName, int id) {
-		for (Integer pageId : table_mm_row_map.get(tableName)) {
-			if (pageList[pageId].hasTuple(id))
+	public Tuple getTuple(String tableName, int id) {
+		List<Integer> pages = this.getPageList(tableName);
+		if(pages == null) return null;
+		for (Integer pageId : pages) {
+			Tuple tuple = this.pageList[pageId].getTuple(id);
+			if (tuple != null)
+				return tuple;
+		}
+		return null;
+	}
+
+	public boolean insertTuple(String tableName, Tuple tuple) {
+		List<Integer> pages = this.getPageList(tableName);
+		for(Integer pageId: pages){
+			RowPage page = pageList[pageId];
+			if(!page.isFull()){
+				page.insertTuple(tuple);
 				return true;
+			}
 		}
 		return false;
 	}
+
 }

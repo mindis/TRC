@@ -17,27 +17,36 @@ public class DataManager {
 		return true;
 	}
 
+
+	/**
+	 * 1) search the row buffer sequentially to see if the tuple is there 2) if
+	 * not, bring disk file to the row buffer 3) search the row buffer again.
+	 * 
+	 * @param tableName
+	 * @param id
+	 * @return
+	 */
+
 	private static byte[] retrieve(String tableName, int id) {
-		// check if the table exist or not
-		if (!ResMgr.containsTable(tableName)) {
-			System.out.println("table doesn't exist!");
-			return null;
-		}
-		// check if the the tuple containing the id is in the rowBuffer
-		byte[] tuple = ResMgr.findTupleInRowBuffer(id);
+		Tuple tuple = ResMgr.getTuple(tableName, id);
 		if (tuple != null)
-			return tuple;
+			return tuple.tupleToBytes();
 		// if no tuple in the rowbuffer, bring pages from disk file into the
 		// rowbuffer
-		ResMgr.movePagesFromFileToRowBuffer(id);
-		tuple = ResMgr.findTupleInRowBuffer(id);
-		return tuple;
+		// TODO
+		ResMgr.movePageFromFileToRowBuffer(tableName, id);
+		tuple = ResMgr.getTuple(tableName, id);
+		if (tuple != null)
+			return tuple.tupleToBytes();
+		System.err.println("no such tuple exist in the table");
+		return null;
 	}
 
 	private static void insert(String tableName, String tupleStr) {
 		Tuple tuple = new Tuple(tupleStr);
+		int id = tuple.getId();
 		// if table doesn't exist, create physical disk file and no mem page.
-		//later, retrieve will find mem page and establish mapping
+		// later, retrieve will find mem page and establish mapping
 		if (!ResMgr.containsTable(tableName)) {
 			ResMgr.createFilesForTable(tableName);
 			ResMgr.insertTupleToNewFilePage(tableName, tuple);
@@ -45,17 +54,14 @@ public class DataManager {
 		}
 		// if the table exists, if mem_page contains the tuple to be
 		// inserted, error
-		int id = tuple.getId();
-		if(ResMgr.hasTupleInRowBuffer(tableName, id)){
-			System.err.println("tuple already exists in the row buffer, error!");
+		if (retrieve(tableName, id) != null) {
+			System.err
+					.println("tuple already exists in the row buffer, error!");
 			System.exit(-1);
 		}
-		//insert the tuple to the disk file and not to mem page.
-		//later, retrieve will find mem page and establish mapping
-		
 		// tuple doesn't exist, insert the tuple into the mem_page.
 		// the tuple would be swapped out to the file later by LRU
-		ResMgr.insertTupleIntoRowBuffer(tuple);
+		ResMgr.insertTupleIntoRowBuffer(tableName, tuple);
 	}
 
 	private static void printTuple(byte[] tuple) {
