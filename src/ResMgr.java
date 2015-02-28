@@ -58,25 +58,25 @@ public class ResMgr {
 	public static void movePageFromFileToRowBuffer(String tableName, int id) {
 		DiskFile[] diskFiles = table_file_map.get(tableName);
 		DiskFile idFile = diskFiles[0], nameFile = diskFiles[1], phoneFile = diskFiles[2];
-		List<Integer> idElements = idFile.getIdElementsWithId(id);
-		List<String> nameElements = nameFile.getNameElementsWithId(id);
-		List<String> phoneElements = phoneFile.getPhoneElementsWithId(id);
-		int idPageNum = idFile.getIdPageNum(id), namePageNum = nameFile
-				.getNamePageNum(id), phonePageNum = phoneFile
-				.getPhonePageNum(id);
-
-		if (idElements.size() != nameElements.size()
-				|| idElements.size() != phoneElements.size()) {
-			System.err
-					.println("the number of the elements in each file should be the same");
-			System.exit(-1);
-		}
-
-		for (int i = 0; i < idElements.size(); i++) {
-			Tuple tuple = new Tuple(idElements.get(i), nameElements.get(i),
-					phoneElements.get(i));
-			insertTupleIntoRowBuffer(tableName, tuple);
-		}
+////		List<Integer> idElements = idFile.getIdElementsWithId(id);
+////		List<String> nameElements = nameFile.getNameElementsWithId(id);
+////		List<String> phoneElements = phoneFile.getPhoneElementsWithId(id);
+////		int idPageNum = idFile.getIdPageNum(id), namePageNum = nameFile
+////				.getNamePageNum(id), phonePageNum = phoneFile
+////				.getPhonePageNum(id);
+//
+//		if (idElements.size() != nameElements.size()
+//				|| idElements.size() != phoneElements.size()) {
+//			System.err
+//					.println("the number of the elements in each file should be the same");
+//			System.exit(-1);
+//		}
+//
+//		for (int i = 0; i < idElements.size(); i++) {
+//			Tuple tuple = new Tuple(idElements.get(i), nameElements.get(i),
+//					phoneElements.get(i));
+//			insertTupleIntoRowBuffer(tableName, tuple);
+//		}
 		//swap out 
 		
 		//swap in

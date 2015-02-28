@@ -3,7 +3,7 @@ public class DataManager {
 	public static void execute(String opr) {
 		String[] tokens = opr.split("\\s");
 		if (tokens[0].equals("R")) {
-			byte[] tuple = retrieve(tokens[1], Integer.parseInt(tokens[2]));
+			Tuple tuple = retrieve(tokens[1], Integer.parseInt(tokens[2]));
 			if (tuple != null)
 				printTuple(tuple);
 			else
@@ -27,17 +27,17 @@ public class DataManager {
 	 * @return
 	 */
 
-	private static byte[] retrieve(String tableName, int id) {
+	private static Tuple retrieve(String tableName, int id) {
 		Tuple tuple = ResMgr.getTuple(tableName, id);
 		if (tuple != null)
-			return tuple.tupleToBytes();
+			return tuple;
 		// if no tuple in the rowbuffer, bring pages from disk file into the
 		// rowbuffer
 		// TODO
 		ResMgr.movePageFromFileToRowBuffer(tableName, id);
 		tuple = ResMgr.getTuple(tableName, id);
 		if (tuple != null)
-			return tuple.tupleToBytes();
+			return tuple;
 		System.err.println("no such tuple exist in the table");
 		return null;
 	}
@@ -64,8 +64,7 @@ public class DataManager {
 		ResMgr.insertTupleIntoRowBuffer(tableName, tuple);
 	}
 
-	private static void printTuple(byte[] tuple) {
-		// TODO Auto-generated method stub
-
+	private static void printTuple(Tuple tuple) {
+		System.out.println("Tuple: " + tuple.toString());
 	}
 }

@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiskFile {
-	private static int PAGE_SIZE = 512; // 512B
 	protected String filePath = null;
 	protected int[] header = null;
 
 	private static int BUCKET_NUM = 16;
-	protected List<DiskPage> pageList = null;
 	RandomAccessFile file = null;
 
 	public DiskFile(String filePath) {
@@ -25,7 +23,6 @@ public class DiskFile {
 
 		this.header = new int[BUCKET_NUM];
 		this.readFileHeader();
-		this.pageList = new ArrayList<DiskPage>();
 	}
 
 	public void createNewPageToHoldTupleId(Tuple tuple) {
@@ -106,15 +103,15 @@ public class DiskFile {
 			this.header[i] = headerBytes.getInt();
 	}
 
-//	private byte[] readPageWithPagePointer(int id) {
-//		int pagePointer = this.pagePointers[id % BUCKET_NUM];
-//		if (pagePointer < 0) {
-//			System.err.println("pagePointer must be a valid page index number");
-//			System.exit(-1);
-//		}
-//		int pageOffsetByte = 0 + 16 * 4 + pagePointer * PAGE_SIZE;
-//		return readFromFile(pageOffsetByte, PAGE_SIZE);
-//	}
+	// private byte[] readPageWithPagePointer(int id) {
+	// int pagePointer = this.pagePointers[id % BUCKET_NUM];
+	// if (pagePointer < 0) {
+	// System.err.println("pagePointer must be a valid page index number");
+	// System.exit(-1);
+	// }
+	// int pageOffsetByte = 0 + 16 * 4 + pagePointer * PAGE_SIZE;
+	// return readFromFile(pageOffsetByte, PAGE_SIZE);
+	// }
 
 	private void writeFileHeader() {
 		try {
@@ -128,38 +125,6 @@ public class DiskFile {
 			System.err.print("Error writing to the end of file");
 		}
 	}
-
-	public List<Integer> getIdElementsWithId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public List<String> getNameElementsWithId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public List<String> getPhoneElementsWithId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public int getIdPageNum(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getNamePageNum(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getPhonePageNum(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 
 
 }
