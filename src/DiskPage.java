@@ -16,7 +16,7 @@ public class DiskPage {
 		return this.page;
 	}
 	
-	public void putInt(int x, int position) {
+	public void putInt(int x, int position, boolean append) {
 		byte[] intByte = ByteBuffer.allocate(4).putInt(x).array();
 		for (int i = 0; i < intByte.length; i++)
 			page[position + i] = intByte[i];
