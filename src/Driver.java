@@ -7,16 +7,10 @@ public class Driver {
 	 * initialize the data structure for TRC, including the hash table, memory ,
 	 * page table
 	 */
-	public static void initResource() {
+	private static void initResource() {
 		ResMgr.initMemPages();
 		ResMgr.initHashTable();
 		ResMgr.initPageTable();
-	}
-
-	public static void main(String[] args) {
-		CliParser.parse(args);
-		initResource();
-		run();
 	}
 
 	/**
@@ -45,6 +39,12 @@ public class Driver {
 			System.out.printf("operation %s \n", operation);
 			DataManager.execute(operation);
 		}
+	}
+
+	public static void main(String[] args) {
+		CliParser.parse(args);
+		initResource();
+		run();
 	}
 
 }

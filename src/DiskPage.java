@@ -1,29 +1,25 @@
 import java.nio.ByteBuffer;
-import java.util.Arrays;
+
 
 public class DiskPage {
-	private static int PAGE_SIZE = 512;//512
-
+	private static int PAGE_SIZE = 512; // 512B
+	private byte[] page;
+	// the last int is a pointer to next page, initialized to be -1
+	// the second last int is a pointer to next available slot.
 	public DiskPage() {
-		
+		page = new byte[PAGE_SIZE];
+		putInt(-1, PAGE_SIZE - 4);
+		putInt(0, PAGE_SIZE - 8);
 	}
 	
-	public byte[] pageToBytes(){
-		byte[] tupleBytes = new byte[32];
-		byte[] nameArr = new byte[16];
-		byte[] phoneArr = new byte[12];
-		nameArr = Arrays.copyOf(this.name.getBytes(), 16);
-		phoneArr = Arrays.copyOf(this.phone.getBytes(), 16);
-		ByteBuffer tupleBuf = ByteBuffer.allocate(32);
-		tupleBuf.putInt(id);
-		tupleBuf.put(nameArr);
-		tupleBuf.put(phoneArr);
-		return tupleBuf.array();
+	public byte[] getData() {
+		return this.page;
 	}
-
-	public int getId() {
-		// TODO Auto-generated method stub
-		return this.id;
+	
+	public void putInt(int x, int position) {
+		byte[] intByte = ByteBuffer.allocate(4).putInt(x).array();
+		for (int i = 0; i < intByte.length; i++)
+			page[position + i] = intByte[i];
 	}
 	
 }

@@ -45,11 +45,6 @@ public class DataManager {
 		// if the table exists, check if mem_page contains the tuple to be
 		// inserted
 		int id = tuple.getId();
-		byte[] tupleArr = retrieve(tableName, id);
-		if (tupleArr != null) {
-			System.out.println("illegal insertion: tuple already exists!");
-			return;
-		}
 		// tuple doesn't exist, insert the tuple into the mem_page.
 		// the tuple would be swapped out to the file later by LRU
 		ResMgr.insertTupleIntoRowBuffer(tupleStr);

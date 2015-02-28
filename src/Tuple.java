@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Tuple {
 	int id;
 	String name, phone;
-	private static int TUPLE_SIZE = 32;
+	private static final int TUPLE_SIZE = 32;
 
 	public Tuple(String tupleStr) {
 		// tokenize the tuplestr
@@ -23,7 +23,6 @@ public class Tuple {
 	}
 
 	public byte[] tupleToBytes() {
-		byte[] tupleBytes = new byte[32];
 		byte[] nameArr = new byte[16];
 		byte[] phoneArr = new byte[12];
 		nameArr = Arrays.copyOf(this.name.getBytes(), 16);
@@ -46,7 +45,6 @@ public class Tuple {
 	}
 
 	public int getId() {
-		// TODO Auto-generated method stub
 		return this.id;
 	}
 

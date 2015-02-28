@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.HashMap;
 import java.util.List;
+import java.nio.ByteBuffer;
 
 public class ResMgr {
 	public static int nrPages; // # of pages for each row/column page buffer
@@ -60,7 +61,6 @@ public class ResMgr {
 	}
 
 	public static boolean containsTable(String tableName) {
-		// TODO Auto-generated method stub
 		return table_file_map.containsKey(tableName);
 	}
 
@@ -94,51 +94,29 @@ public class ResMgr {
 	 */
 	public static void insertTupleToFiles(String tableName, Tuple tuple) {
 		int id = tuple.getId();
-		int bucketNum = getHashBucket(id);
-		String[] fileNames = table_file_map.get(tableName);
-		for(String fileName: fileNames){
-			try {
-				byte[] header = readFromFile(fileName, 0, 4 * 16);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("invalid header!");
-				e.printStackTrace();
-			}
-			for(int i = 0; i < 16; i++){
-				byte[] 
-			}
-		}
+		int bucketNum = id % 16;
+		String[] fileArray = table_file_map.get(tableName);
+	//	for(String file: fileArray){
+		//	int[] header = readFileHeader(file);
+			String file = fileArray[0];
+			DiskPage newPage = new DiskPage();
+			newPage.putInt(id, 0);
+			IOManager.writeToFileEnd(file, newPage.getData());
+	//	}
 
+	}
+	
+	private static int[] readFileHeader(String file) {
+		ByteBuffer headerBytes = ByteBuffer.allocate(4 * 16);
+		headerBytes.put(IOManager.readFromFile(file, 0, 16 * 4));
+		int[] header = new int[16];
+		for (int i = 0; i < header.length; i++)
+			header[i] = headerBytes.getInt();
+		return header;
 	}
 
 	public static void insertTupleIntoRowBuffer(String tupleStr) {
 		// TODO Auto-generated method stub
-
-	}
-
-	private static int getHashBucket(int id) {
-		return id % 16;
-	}
-
-	private static byte[] readFromFile(String filePath, int position, int size)
-			throws IOException {
-
-		RandomAccessFile file = new RandomAccessFile(filePath, "r");
-		file.seek(position);
-		byte[] bytes = new byte[size];
-		file.read(bytes);
-		file.close();
-		return bytes;
-
-	}
-
-	private static void writeToFile(String filePath, byte[] data, int position)
-			throws IOException {
-
-		RandomAccessFile file = new RandomAccessFile(filePath, "rw");
-		file.seek(position);
-		file.write(data);
-		file.close();
 
 	}
 
