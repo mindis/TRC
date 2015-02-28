@@ -1,20 +1,22 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.nio.ByteBuffer;
 
 public class ResMgr {
 	public static int nrPages; // # of pages for each row/column page buffer
 	private static final int PAGE_SIZE = 512;// 512 bytes per page
 	private static final int TUPLE_SIZE = 32; // 32 bytes per tuple
-	public static byte[] rowBuffer, colBuffer;
+	public static RowBuffer rowBuffer;
+	public static byte[] colBuffer;
 	// map from table to main memory
-	public static HashMap<String, List<Integer>[]> table_mm_map = null;
+	public static HashMap<String, List<Integer>> table_mm_row_map = null,
+			table_mm_col_map = null;
 	// map from table to disk file
-	public static HashMap<String, String[]> table_file_map = null;
+	public static HashMap<String, DiskFile[]> table_file_map = null;
 	public static PageTable pageTable = null;
 
 	/**
@@ -27,7 +29,7 @@ public class ResMgr {
 					.println("<#pages> should be an integer of 16k, k = 1, 2, 3...");
 			System.exit(-1);
 		}
-		rowBuffer = new byte[nrPages * PAGE_SIZE];
+		rowBuffer = new RowBuffer(nrPages, table_mm_row_map, pageTable);
 		colBuffer = new byte[nrPages * PAGE_SIZE];
 	}
 
@@ -36,8 +38,9 @@ public class ResMgr {
 	 * disk file
 	 */
 	public static void initHashTable() {
-		table_mm_map = new HashMap<String, List<Integer>[]>();
-		table_file_map = new HashMap<String, String[]>();
+		table_mm_row_map = new HashMap<String, List<Integer>>();
+		table_mm_col_map = new HashMap<String, List<Integer>>();
+		table_file_map = new HashMap<String, DiskFile[]>();
 	}
 
 	public static void initPageTable() {
@@ -55,7 +58,7 @@ public class ResMgr {
 		return null;
 	}
 
-	public static void movePagesFromFileToRowBuffer(int id) {
+	public static void movePageFromFileToRowBuffer(int id) {
 		// TODO Auto-generated method stub
 
 	}
@@ -67,11 +70,16 @@ public class ResMgr {
 	public static void createFilesForTable(String tableName) {
 		String idFileName = tableName + "_id", nameFileName = tableName
 				+ "_name", phoneFileName = tableName + "_phone";
-		String[] files = new String[] { idFileName, nameFileName, phoneFileName };
-		for (String file : files)
-			createEmptyFile(file);
+		String[] fileNames = new String[] { idFileName, nameFileName,
+				phoneFileName };
+		for (String fileName : fileNames)
+			createEmptyFile(fileName);
+		DiskFile[] files = new DiskFile[] { new DiskFile(fileNames[0]),
+				new DiskFile(fileNames[1]), new DiskFile(fileNames[2]) };
 		// update the table_file_map
 		table_file_map.put(tableName, files);
+		table_mm_row_map.put(tableName, new ArrayList<Integer>());
+		table_mm_col_map.put(tableName, new ArrayList<Integer>());
 	}
 
 	private static void createEmptyFile(String fileName) {
@@ -86,38 +94,35 @@ public class ResMgr {
 	}
 
 	/**
-	 * insert each element of the tuple into the corresponding files at the unit
-	 * of Page
+	 * Under this two situation this function gets called:
+	 * 1) when no file exist for the table
+	 * 2) when the tuple to be inserted cannot fit into memory page, we should create new disk
+	 * page in order to hold the element of the new tuple
+	 * 
+	 * there's nothing to do with the page table, page table is updated only when retrieve happened.
+	 * When insertion stop at the memory level, just set the dirty bit of the page table so that
+	 * when swapped out, the content will be write back to the memory.
 	 * 
 	 * @param tableName
 	 * @param tuple
 	 */
-	public static void insertTupleToFiles(String tableName, Tuple tuple) {
-		int id = tuple.getId();
-		int bucketNum = id % 16;
-		String[] fileArray = table_file_map.get(tableName);
-	//	for(String file: fileArray){
-		//	int[] header = readFileHeader(file);
-			String file = fileArray[0];
-			DiskPage newPage = new DiskPage();
-			newPage.putInt(id, 0);
-			IOManager.writeToFileEnd(file, newPage.getData());
-	//	}
-
-	}
-	
-	private static int[] readFileHeader(String file) {
-		ByteBuffer headerBytes = ByteBuffer.allocate(4 * 16);
-		headerBytes.put(IOManager.readFromFile(file, 0, 16 * 4));
-		int[] header = new int[16];
-		for (int i = 0; i < header.length; i++)
-			header[i] = headerBytes.getInt();
-		return header;
+	public static void insertTupleToNewFilePage(String tableName, Tuple tuple) {
+		// TODO: update bucket pointers-->fseek()
+		DiskFile[] diskFiles = table_file_map.get(tableName);
+		DiskFile idFile = diskFiles[0], nameFile = diskFiles[1], phoneFile = diskFiles[2];
+		idFile.createNewPageToHoldTupleId(tuple);
+		nameFile.createNewPageToHoldTupleName(tuple);
+		phoneFile.createNewPageToHoldTuplePhone(tuple);
 	}
 
-	public static void insertTupleIntoRowBuffer(String tupleStr) {
+	public static void insertTupleIntoRowBuffer(Tuple tuple) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public static boolean hasTupleInRowBuffer(String tableName, int id) {
+		// TODO Auto-generated method stub
+		return rowBuffer.hasTuple(tableName, id);
 	}
 
 }

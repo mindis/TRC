@@ -23,10 +23,8 @@ public class Tuple {
 	}
 
 	public byte[] tupleToBytes() {
-		byte[] nameArr = new byte[16];
-		byte[] phoneArr = new byte[12];
-		nameArr = Arrays.copyOf(this.name.getBytes(), 16);
-		phoneArr = Arrays.copyOf(this.phone.getBytes(), 12);
+		byte[] nameArr = ByteManager.strToBytes(this.name, 16);
+		byte[] phoneArr =  ByteManager.strToBytes(this.phone, 12);
 		ByteBuffer tupleBuf = ByteBuffer.allocate(32);
 		tupleBuf.putInt(id);
 		tupleBuf.put(nameArr);
@@ -38,7 +36,7 @@ public class Tuple {
 		byte[] idArr = Arrays.copyOfRange(bytes, 0, 4);
 		byte[] nameArr = Arrays.copyOfRange(bytes, 4, 20);
 		byte[] phoneArr = Arrays.copyOfRange(bytes, 20, 32);
-		int id = new BigInteger(idArr).intValue();
+		int id = ByteManager.bytesToInt(idArr);
 		String name = new String(nameArr);
 		String phone = new String(phoneArr);
 		return new Tuple(id, name, phone);
@@ -46,6 +44,18 @@ public class Tuple {
 
 	public int getId() {
 		return this.id;
+	}
+	
+	public boolean containsId(int id){
+		return this.getId() == id;
+	}
+	
+	public String getName(){
+		return this.name;
+	}
+	
+	public String getPhone(){
+		return this.phone;
 	}
 
 	public String toString() {

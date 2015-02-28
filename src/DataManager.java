@@ -36,18 +36,26 @@ public class DataManager {
 
 	private static void insert(String tableName, String tupleStr) {
 		Tuple tuple = new Tuple(tupleStr);
-		// check if table exist or not
+		// if table doesn't exist, create physical disk file and no mem page.
+		//later, retrieve will find mem page and establish mapping
 		if (!ResMgr.containsTable(tableName)) {
 			ResMgr.createFilesForTable(tableName);
-			ResMgr.insertTupleToFiles(tableName, tuple);
+			ResMgr.insertTupleToNewFilePage(tableName, tuple);
 			return;
 		}
-		// if the table exists, check if mem_page contains the tuple to be
-		// inserted
+		// if the table exists, if mem_page contains the tuple to be
+		// inserted, error
 		int id = tuple.getId();
+		if(ResMgr.hasTupleInRowBuffer(tableName, id)){
+			System.err.println("tuple already exists in the row buffer, error!");
+			System.exit(-1);
+		}
+		//insert the tuple to the disk file and not to mem page.
+		//later, retrieve will find mem page and establish mapping
+		
 		// tuple doesn't exist, insert the tuple into the mem_page.
 		// the tuple would be swapped out to the file later by LRU
-		ResMgr.insertTupleIntoRowBuffer(tupleStr);
+		ResMgr.insertTupleIntoRowBuffer(tuple);
 	}
 
 	private static void printTuple(byte[] tuple) {
